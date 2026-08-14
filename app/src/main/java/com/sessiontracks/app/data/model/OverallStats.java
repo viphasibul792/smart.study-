@@ -12,6 +12,7 @@ public class OverallStats {
     public OverallStats() {
     }
 
+    @androidx.room.Ignore
     public OverallStats(int sessionCount, int subjectCount, int chapterCount,
                         int totalLectures, int completedLectures) {
         this.sessionCount = sessionCount;

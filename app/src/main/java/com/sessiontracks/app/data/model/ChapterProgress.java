@@ -13,6 +13,7 @@ public class ChapterProgress {
     public ChapterProgress() {
     }
 
+    @androidx.room.Ignore
     public ChapterProgress(@NonNull String chapterId, int totalLectures, int completedLectures) {
         this.chapterId = chapterId;
         this.totalLectures = totalLectures;

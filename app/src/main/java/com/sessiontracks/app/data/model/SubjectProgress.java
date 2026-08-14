@@ -14,6 +14,7 @@ public class SubjectProgress {
     public SubjectProgress() {
     }
 
+    @androidx.room.Ignore
     public SubjectProgress(@NonNull String subjectId, int totalLectures, int completedLectures, int chapterCount) {
         this.subjectId = subjectId;
         this.totalLectures = totalLectures;

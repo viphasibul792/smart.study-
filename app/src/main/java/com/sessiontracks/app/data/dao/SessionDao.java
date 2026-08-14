@@ -6,7 +6,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.sessiontracks.app.data.entity.StudySession;
@@ -54,13 +53,4 @@ public interface SessionDao {
 
     @Query("DELETE FROM sessions")
     void deleteAll();
-
-    @Transaction
-    default void reorder(List<StudySession> sessions) {
-        for (int i = 0; i < sessions.size(); i++) {
-            StudySession session = sessions.get(i);
-            session.setPosition(i);
-            update(session);
-        }
-    }
 }
