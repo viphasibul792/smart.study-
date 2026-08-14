@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bulk Link Importer bottom sheet: paste → parse → preview → apply. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/space_xl"
+    android:paddingEnd="@dimen/space_xl"
+    android:paddingBottom="@dimen/space_lg">
+
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/space_md"
+        android:layout_marginBottom="@dimen/space_md"
+        android:background="@drawable/bg_bottom_sheet_handle"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bulk_title"
+        android:textAppearance="@style/TextAppearance.SessionTracks.TitleLarge" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xxs"
+        android:text="@string/bulk_subtitle"
+        android:textAppearance="@style/TextAppearance.SessionTracks.Body" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bulkInputLayout"
+        style="@style/Widget.SessionTracks.TextInputLayout"
+        android:layout_marginTop="@dimen/space_lg"
+        android:hint="@string/bulk_input_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bulkEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:minHeight="@dimen/bulk_input_min_height"
+            android:scrollbars="vertical"
+            android:textSize="@dimen/text_body"
+            tools:ignore="Autofill" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_sm"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pasteButton"
+            style="@style/Widget.SessionTracks.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/bulk_paste_clipboard"
+            app:icon="@drawable/ic_content_paste" />
+
+        <Space
+            android:layout_width="@dimen/space_sm"
+            android:layout_height="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/parseButton"
+            style="@style/Widget.SessionTracks.Button.Tonal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/bulk_parse"
+            app:icon="@drawable/ic_search" />
+    </LinearLayout>
+
+    <!-- Mapping options -->
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/numberedModeSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_md"
+        android:checked="true"
+        android:minHeight="@dimen/touch_target_min"
+        android:text="@string/bulk_mode_numbered"
+        android:textAppearance="@style/TextAppearance.SessionTracks.BodyLarge" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bulk_mode_hint"
+        android:textAppearance="@style/TextAppearance.SessionTracks.Caption" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/overwriteSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_sm"
+        android:checked="true"
+        android:minHeight="@dimen/touch_target_min"
+        android:text="@string/bulk_overwrite"
+        android:textAppearance="@style/TextAppearance.SessionTracks.BodyLarge" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/expandSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:minHeight="@dimen/touch_target_min"
+        android:text="@string/bulk_expand_lectures"
+        android:textAppearance="@style/TextAppearance.SessionTracks.BodyLarge" />
+
+    <!-- Preview -->
+    <TextView
+        android:id="@+id/previewTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_md"
+        android:text="@string/bulk_preview_title"
+        android:textAppearance="@style/TextAppearance.SessionTracks.Overline"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/resultCountText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xxs"
+        android:textAppearance="@style/TextAppearance.SessionTracks.Body"
+        android:visibility="gone"
+        tools:text="১২ টি লিঙ্ক পাওয়া গেছে"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/previewRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_sm"
+        android:maxHeight="220dp"
+        android:visibility="gone"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_link_preview"
+        tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/applyButton"
+        style="@style/Widget.SessionTracks.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_lg"
+        android:enabled="false"
+        android:text="@string/action_apply"
+        app:icon="@drawable/ic_check" />
+
+</LinearLayout>

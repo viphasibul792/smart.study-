@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="session_palette">
+        <item>@color/palette_indigo</item>
+        <item>@color/palette_violet</item>
+        <item>@color/palette_pink</item>
+        <item>@color/palette_rose</item>
+        <item>@color/palette_orange</item>
+        <item>@color/palette_amber</item>
+        <item>@color/palette_emerald</item>
+        <item>@color/palette_teal</item>
+        <item>@color/palette_cyan</item>
+        <item>@color/palette_blue</item>
+    </array>
+
+    <string-array name="theme_entries">
+        <item>@string/settings_theme_system</item>
+        <item>@string/settings_theme_light</item>
+        <item>@string/settings_theme_dark</item>
+    </string-array>
+
+    <string-array name="language_entries">
+        <item>@string/settings_language_system</item>
+        <item>@string/settings_language_bn</item>
+        <item>@string/settings_language_en</item>
+    </string-array>
+
+</resources>

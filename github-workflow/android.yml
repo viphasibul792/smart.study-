@@ -1,0 +1,138 @@
+# ============================================================================
+#  Session Tracks — Native Android CI
+#
+#  ⚠️  INSTALL THIS FILE AT:  .github/workflows/android.yml
+#
+#  The automation credential used to push this branch does not carry GitHub's
+#  `workflow` scope, so this file could not be written directly into
+#  .github/workflows/. Copy it there once (GitHub web UI → Add file, or
+#  `git mv github-workflow/android.yml .github/workflows/android.yml`) and every
+#  push to the branch will build the debug + release APKs, run lint and unit
+#  tests, and publish a GitHub Release with both APKs attached.
+# ============================================================================
+name: Android CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version tag (e.g. v1.0.0)"
+        required: false
+        default: "v1.0.0"
+  push:
+    branches:
+      - main
+      - arena/01a0012c-smart-study
+    paths-ignore:
+      - "**.md"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build, test and release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest --no-daemon --stacktrace
+
+      - name: Run Android Lint
+        run: ./gradlew lint --no-daemon --stacktrace
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      # A keystore is generated on the fly so the release APK is properly signed
+      # and installable. Rotate to a repository secret for Play Store uploads.
+      - name: Generate release keystore
+        run: |
+          keytool -genkeypair -v \
+            -keystore "$RUNNER_TEMP/release.keystore" \
+            -alias sessiontracks \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass "${{ secrets.KEYSTORE_PASSWORD || 'sessiontracks' }}" \
+            -keypass "${{ secrets.KEY_PASSWORD || 'sessiontracks' }}" \
+            -dname "CN=Session Tracks, OU=App, O=Session Tracks, L=Dhaka, C=BD"
+
+      - name: Build release APK
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/release.keystore
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'sessiontracks' }}
+          ANDROID_KEY_ALIAS: sessiontracks
+          ANDROID_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'sessiontracks' }}
+        run: ./gradlew assembleRelease --no-daemon --stacktrace
+
+      - name: Collect APKs
+        id: collect
+        run: |
+          VERSION="${{ github.event.inputs.version || 'v1.0.0' }}"
+          mkdir -p artifacts
+          cp app/build/outputs/apk/debug/app-debug.apk "artifacts/session-tracks-${VERSION}-debug.apk"
+          cp app/build/outputs/apk/release/app-release.apk "artifacts/session-tracks-${VERSION}-release.apk"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          ls -lh artifacts
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: session-tracks-apks
+          path: artifacts/*.apk
+          if-no-files-found: error
+
+      - name: Upload lint and test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            app/build/reports/lint-results-debug.html
+            app/build/reports/tests/testDebugUnitTest/**
+          if-no-files-found: ignore
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.collect.outputs.version }}
+          name: "Session Tracks ${{ steps.collect.outputs.version }}"
+          target_commitish: ${{ github.sha }}
+          body: |
+            ## 📚 Session Tracks — স্টাডি সেশন ও লেকচার ট্র্যাকার
+
+            Native Android application (Java + XML View System, MVVM + Room).
+
+            ### 📥 ইনস্টল করুন
+            1. নিচ থেকে `session-tracks-${{ steps.collect.outputs.version }}-release.apk` ডাউনলোড করুন
+            2. ফোনে ফাইলটি খুলুন ("Install from unknown sources" চাইলে অনুমতি দিন)
+            3. ইনস্টল সম্পন্ন! 🎉
+
+            ### ✨ ফিচার
+            - ৩টি ডিফল্ট সেশন + ডাইনামিক সেশন এডিটর
+            - বিষয় ব্যবস্থাপনা ও কাস্টম সময়সূচি
+            - অধ্যায় ও স্বয়ংক্রিয় লেকচার বাটন তৈরি
+            - বাল্ক লিঙ্ক ইম্পোর্টার (স্মার্ট লিঙ্ক ম্যাপিং)
+            - এক ক্লিকে YouTube প্লে + কমপ্লিশন চেকবক্স
+            - প্রোগ্রেস বার ও কুইক নোটস
+            - `.json` ব্যাকআপ ডাউনলোড ও রিস্টোর
+            - সেশন রিমাইন্ডার নোটিফিকেশন
+            - ডার্ক মোড, বাংলা/English, সম্পূর্ণ অফলাইন
+
+            _GitHub Actions দ্বারা স্বয়ংক্রিয়ভাবে বিল্ড করা।_
+          files: artifacts/*.apk
+          fail_on_unmatched_files: true

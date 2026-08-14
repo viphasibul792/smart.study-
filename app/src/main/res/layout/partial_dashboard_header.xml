@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gradient summary card at the top of the dashboard. -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/headerCardRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/screen_padding_horizontal"
+    android:layout_marginEnd="@dimen/screen_padding_horizontal"
+    android:layout_marginBottom="@dimen/space_lg"
+    app:cardCornerRadius="@dimen/radius_lg"
+    app:cardElevation="@dimen/elevation_raised">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_header_gradient"
+        android:orientation="vertical"
+        android:padding="@dimen/space_xl">
+
+        <TextView
+            android:id="@+id/greetingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_body"
+            android:alpha="0.92"
+            tools:text="শুভ সন্ধ্যা" />
+
+        <TextView
+            android:id="@+id/overallPercentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_display"
+            android:textStyle="bold"
+            tools:text="60% সম্পন্ন" />
+
+        <TextView
+            android:id="@+id/overallDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.92"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_caption"
+            tools:text="২০ টির মধ্যে ১২ টি সম্পন্ন" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/overallProgressBar"
+            style="@style/Widget.SessionTracks.Progress.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            app:indicatorColor="@color/white"
+            app:trackColor="#4DFFFFFF"
+            tools:progress="60" />
+
+        <TextView
+            android:id="@+id/nextSessionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:alpha="0.95"
+            android:drawablePadding="@dimen/space_xs"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_caption"
+            app:drawableStartCompat="@drawable/ic_time"
+            app:drawableTint="@color/white"
+            tools:text="পরবর্তী সেশন: সেশন ২" />
+
+        <!-- Stat pills -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_pill"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <TextView
+                    android:id="@+id/statSessionsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold"
+                    tools:text="3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:text="@string/dashboard_stat_sessions"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_overline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_sm"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_pill"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <TextView
+                    android:id="@+id/statSubjectsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold"
+                    tools:text="6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:text="@string/dashboard_stat_subjects"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_overline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_sm"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_pill"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <TextView
+                    android:id="@+id/statLecturesValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold"
+                    tools:text="20" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:text="@string/dashboard_stat_lectures"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_overline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_sm"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_pill"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <TextView
+                    android:id="@+id/statCompletedValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold"
+                    tools:text="12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:text="@string/dashboard_stat_completed"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_overline" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

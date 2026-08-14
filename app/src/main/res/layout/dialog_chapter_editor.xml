@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxWidth="@dimen/dialog_max_width">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/space_2xl"
+        android:paddingTop="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_2xl"
+        android:paddingBottom="@dimen/space_sm">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/numberInputLayout"
+            style="@style/Widget.SessionTracks.TextInputLayout"
+            android:hint="@string/chapter_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/chapter_number_hint"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLength="12"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            style="@style/Widget.SessionTracks.TextInputLayout"
+            android:layout_marginTop="@dimen/space_sm"
+            android:hint="@string/chapter_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/chapter_name_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/totalLecturesInputLayout"
+            style="@style/Widget.SessionTracks.TextInputLayout"
+            android:layout_marginTop="@dimen/space_sm"
+            android:hint="@string/chapter_total_lectures">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/totalLecturesEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/chapter_total_lectures_hint"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/lectureHelperText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:textAppearance="@style/TextAppearance.SessionTracks.Caption"
+            tools:text="সংখ্যা দিলে স্বয়ংক্রিয়ভাবে লেকচার বাটন তৈরি হবে (সর্বোচ্চ ৫০০)" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

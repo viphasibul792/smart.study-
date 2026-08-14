@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    tools:context=".ui.main.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/screen_background"
+        app:elevation="0dp"
+        app:liftOnScroll="true"
+        app:liftOnScrollTargetViewId="@+id/sessionsRecyclerView">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.SessionTracks.Toolbar"
+            android:background="@color/screen_background"
+            app:menu="@menu/menu_main"
+            app:title="@string/app_name"
+            app:titleTextAppearance="@style/TextAppearance.SessionTracks.TitleLarge" />
+
+        <!-- Inline search bar, toggled from the toolbar action -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchInputLayout"
+            style="@style/Widget.SessionTracks.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_padding_horizontal"
+            android:layout_marginEnd="@dimen/screen_padding_horizontal"
+            android:layout_marginBottom="@dimen/space_sm"
+            android:hint="@string/dashboard_search_hint"
+            android:visibility="gone"
+            app:endIconMode="clear_text"
+            app:errorEnabled="false"
+            app:startIconContentDescription="@string/action_search"
+            app:startIconDrawable="@drawable/ic_search"
+            tools:visibility="visible">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="@dimen/text_body_lg" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/contentScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/list_bottom_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Offline banner -->
+                <LinearLayout
+                    android:id="@+id/offlineBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_padding_horizontal"
+                    android:layout_marginEnd="@dimen/screen_padding_horizontal"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:background="@drawable/bg_offline_banner"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/space_md"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_sm"
+                        android:layout_height="@dimen/icon_sm"
+                        android:contentDescription="@string/error_no_internet"
+                        android:src="@drawable/ic_offline"
+                        app:tint="@color/on_warning_container" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_sm"
+                        android:layout_weight="1"
+                        android:text="@string/error_offline_banner"
+                        android:textColor="@color/on_warning_container"
+                        android:textSize="@dimen/text_caption" />
+                </LinearLayout>
+
+                <!-- Header summary card -->
+                <include
+                    android:id="@+id/headerCard"
+                    layout="@layout/partial_dashboard_header" />
+
+                <!-- Skeleton loading state -->
+                <include
+                    android:id="@+id/loadingState"
+                    layout="@layout/partial_loading_skeleton" />
+
+                <!-- Empty state -->
+                <include
+                    android:id="@+id/emptyState"
+                    layout="@layout/partial_empty_state" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sessionsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingStart="@dimen/screen_padding_horizontal"
+                    android:paddingEnd="@dimen/screen_padding_horizontal"
+                    android:paddingBottom="@dimen/space_md"
+                    android:visibility="gone"
+                    app:layoutAnimation="@anim/layout_animation_fall_down"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_session"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/addSessionFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@string/dashboard_add_session"
+        android:text="@string/dashboard_add_session"
+        app:icon="@drawable/ic_add"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

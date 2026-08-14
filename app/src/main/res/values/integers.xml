@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_lectures_per_chapter">500</integer>
+    <integer name="max_name_length">80</integer>
+    <integer name="max_notes_length">10000</integer>
+    <integer name="anim_duration_short">150</integer>
+    <integer name="anim_duration_medium">250</integer>
+    <integer name="notes_autosave_delay_ms">600</integer>
+    <integer name="search_debounce_ms">250</integer>
+</resources>

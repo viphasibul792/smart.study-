@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Session Tracks</string>
+    <string name="app_tagline">স্টাডি সেশন ও লেকচার ট্র্যাকার</string>
+
+    <!-- ===== Common actions ===== -->
+    <string name="action_save">সংরক্ষণ করুন</string>
+    <string name="action_cancel">বাতিল</string>
+    <string name="action_delete">মুছে ফেলুন</string>
+    <string name="action_edit">সম্পাদনা</string>
+    <string name="action_add">যোগ করুন</string>
+    <string name="action_close">বন্ধ করুন</string>
+    <string name="action_retry">আবার চেষ্টা করুন</string>
+    <string name="action_ok">ঠিক আছে</string>
+    <string name="action_undo">ফেরান</string>
+    <string name="action_share">শেয়ার করুন</string>
+    <string name="action_copy">কপি করুন</string>
+    <string name="action_open">খুলুন</string>
+    <string name="action_done">সম্পন্ন</string>
+    <string name="action_clear">মুছুন</string>
+    <string name="action_apply">প্রয়োগ করুন</string>
+    <string name="action_back">পেছনে</string>
+    <string name="action_more_options">আরও অপশন</string>
+    <string name="action_settings">সেটিংস</string>
+    <string name="action_search">খুঁজুন</string>
+
+    <!-- ===== Dashboard ===== -->
+    <string name="dashboard_title">আমার সেশন</string>
+    <string name="dashboard_greeting_morning">শুভ সকাল</string>
+    <string name="dashboard_greeting_afternoon">শুভ অপরাহ্ন</string>
+    <string name="dashboard_greeting_evening">শুভ সন্ধ্যা</string>
+    <string name="dashboard_greeting_night">শুভ রাত্রি</string>
+    <string name="dashboard_overall_progress">সামগ্রিক অগ্রগতি</string>
+    <string name="dashboard_add_session">নতুন সেশন যোগ করুন</string>
+    <string name="dashboard_today_summary">আজকের পড়া</string>
+    <string name="dashboard_stat_sessions">সেশন</string>
+    <string name="dashboard_stat_subjects">বিষয়</string>
+    <string name="dashboard_stat_lectures">লেকচার</string>
+    <string name="dashboard_stat_completed">সম্পন্ন</string>
+    <string name="dashboard_search_hint">সেশন, বিষয় বা অধ্যায় খুঁজুন</string>
+    <string name="dashboard_next_session">পরবর্তী সেশন: %1$s</string>
+    <string name="dashboard_session_live">এখন চলছে</string>
+    <string name="dashboard_no_upcoming">আজ আর কোনো সেশন বাকি নেই</string>
+
+    <!-- ===== Session ===== -->
+    <string name="default_session_1">সেশন ১</string>
+    <string name="default_session_2">সেশন ২</string>
+    <string name="default_session_3">সেশন ৩</string>
+
+    <string name="session_new">নতুন সেশন</string>
+    <string name="session_edit">সেশন সম্পাদনা</string>
+    <string name="session_name">সেশনের নাম</string>
+    <string name="session_name_hint">যেমন: সেশন ১</string>
+    <string name="session_start_time">শুরুর সময়</string>
+    <string name="session_end_time">শেষের সময়</string>
+    <string name="session_color">রঙ</string>
+    <string name="session_reminder">রিমাইন্ডার চালু করুন</string>
+    <string name="session_reminder_desc">সেশন শুরুর আগে নোটিফিকেশন পাবেন</string>
+    <string name="session_add_subject">বিষয় যোগ করুন</string>
+    <string name="session_delete_title">সেশন মুছবেন?</string>
+    <string name="session_delete_message">\"%1$s\" এবং এর সব বিষয়, অধ্যায় ও অগ্রগতি স্থায়ীভাবে মুছে যাবে।</string>
+    <string name="session_deleted">সেশন মুছে ফেলা হয়েছে</string>
+    <string name="session_saved">সেশন সংরক্ষিত হয়েছে</string>
+    <string name="session_time_range">%1$s – %2$s</string>
+    <string name="session_subject_count">%1$s টি বিষয়</string>
+    <string name="session_duration">%1$s স্থায়ী</string>
+    <string name="session_empty_subjects">এই সেশনে এখনো কোনো বিষয় নেই</string>
+    <string name="session_collapse">সেশন সংকুচিত করুন</string>
+    <string name="session_expand">সেশন প্রসারিত করুন</string>
+
+    <!-- ===== Subject ===== -->
+    <string name="subject_new">নতুন বিষয়</string>
+    <string name="subject_edit">বিষয় সম্পাদনা</string>
+    <string name="subject_name">বিষয়ের নাম</string>
+    <string name="subject_name_hint">যেমন: Physics</string>
+    <string name="subject_time_slot">পড়ার সময়</string>
+    <string name="subject_start_time">শুরু</string>
+    <string name="subject_end_time">শেষ</string>
+    <string name="subject_color">রঙ</string>
+    <string name="subject_delete_title">বিষয় মুছবেন?</string>
+    <string name="subject_delete_message">\"%1$s\" এবং এর সব অধ্যায় ও লেকচার মুছে যাবে।</string>
+    <string name="subject_deleted">বিষয় মুছে ফেলা হয়েছে</string>
+    <string name="subject_saved">বিষয় সংরক্ষিত হয়েছে</string>
+    <string name="subject_chapter_count">%1$s টি অধ্যায়</string>
+    <string name="subject_add_chapter">অধ্যায় যোগ করুন</string>
+    <string name="subject_empty_chapters">এই বিষয়ে এখনো কোনো অধ্যায় নেই</string>
+    <string name="subject_empty_chapters_hint">নিচের বাটনে চাপ দিয়ে প্রথম অধ্যায় যোগ করুন</string>
+
+    <!-- ===== Chapter ===== -->
+    <string name="chapter_new">নতুন অধ্যায়</string>
+    <string name="chapter_edit">অধ্যায় সম্পাদনা</string>
+    <string name="chapter_number">অধ্যায় নম্বর</string>
+    <string name="chapter_number_hint">যেমন: ০২</string>
+    <string name="chapter_name">অধ্যায়ের নাম</string>
+    <string name="chapter_name_hint">যেমন: ভেক্টর</string>
+    <string name="chapter_total_lectures">মোট লেকচার</string>
+    <string name="chapter_total_lectures_hint">যেমন: ২০</string>
+    <string name="chapter_total_lectures_helper">সংখ্যা দিলে স্বয়ংক্রিয়ভাবে লেকচার বাটন তৈরি হবে (সর্বোচ্চ %1$d)</string>
+    <string name="chapter_delete_title">অধ্যায় মুছবেন?</string>
+    <string name="chapter_delete_message">\"%1$s\" এবং এর সব লেকচার, লিঙ্ক ও নোট মুছে যাবে।</string>
+    <string name="chapter_deleted">অধ্যায় মুছে ফেলা হয়েছে</string>
+    <string name="chapter_saved">অধ্যায় সংরক্ষিত হয়েছে</string>
+    <string name="chapter_label">অধ্যায় %1$s</string>
+    <string name="chapter_label_named">অধ্যায় %1$s: %2$s</string>
+    <string name="chapter_empty_lectures">এখনো কোনো লেকচার নেই</string>
+    <string name="chapter_empty_lectures_hint">\"মোট লেকচার\" সংখ্যা দিয়ে লেকচার তৈরি করুন</string>
+    <string name="chapter_progress_format">%1$s%% সম্পন্ন</string>
+    <string name="chapter_progress_detail">%2$s টির মধ্যে %1$s টি সম্পন্ন</string>
+    <string name="chapter_lectures_count">%1$s টি লেকচার</string>
+    <string name="chapter_reset_progress">অগ্রগতি রিসেট করুন</string>
+    <string name="chapter_reset_confirm">এই অধ্যায়ের সব লেকচার আবার অসম্পূর্ণ হিসেবে চিহ্নিত হবে।</string>
+    <string name="chapter_progress_reset">অগ্রগতি রিসেট হয়েছে</string>
+    <string name="chapter_mark_all_done">সব সম্পন্ন চিহ্নিত করুন</string>
+
+    <!-- ===== Lecture ===== -->
+    <string name="lecture_label">Lecture %1$s</string>
+    <string name="lecture_short">L%1$s</string>
+    <string name="lecture_options">লেকচার %1$s অপশন</string>
+    <string name="lecture_play">ভিডিও চালু করুন</string>
+    <string name="lecture_no_link">এই লেকচারে কোনো লিঙ্ক যুক্ত নেই</string>
+    <string name="lecture_no_link_action">লিঙ্ক যোগ করতে বাটনে চেপে ধরে রাখুন</string>
+    <string name="lecture_edit_link">লিঙ্ক সম্পাদনা</string>
+    <string name="lecture_link">ভিডিও লিঙ্ক</string>
+    <string name="lecture_link_hint">https://youtu.be/…</string>
+    <string name="lecture_title">লেকচারের শিরোনাম (ঐচ্ছিক)</string>
+    <string name="lecture_title_hint">যেমন: ভেক্টরের যোগ</string>
+    <string name="lecture_mark_done">সম্পন্ন চিহ্নিত করুন</string>
+    <string name="lecture_mark_undone">অসম্পূর্ণ চিহ্নিত করুন</string>
+    <string name="lecture_completed_at">সম্পন্ন: %1$s</string>
+    <string name="lecture_link_saved">লিঙ্ক সংরক্ষিত হয়েছে</string>
+    <string name="lecture_link_copied">লিঙ্ক কপি হয়েছে</string>
+    <string name="lecture_link_removed">লিঙ্ক মুছে ফেলা হয়েছে</string>
+    <string name="lecture_checkbox_desc">লেকচার %1$s সম্পন্ন চিহ্ন</string>
+    <string name="lecture_status_done">সম্পন্ন</string>
+    <string name="lecture_status_pending">বাকি আছে</string>
+    <string name="lecture_has_note">নোট আছে</string>
+    <string name="lecture_has_link">লিঙ্ক আছে</string>
+    <string name="lecture_invalid_url">সঠিক লিঙ্ক দিন (http বা https দিয়ে শুরু)</string>
+    <string name="lecture_no_player">ভিডিও খোলার মতো কোনো অ্যাপ পাওয়া যায়নি</string>
+    <string name="lecture_add_count">লেকচার সংখ্যা পরিবর্তন করুন</string>
+
+    <!-- ===== Bulk importer ===== -->
+    <string name="bulk_title">বাল্ক লিঙ্ক ইম্পোর্ট</string>
+    <string name="bulk_subtitle">সব লিঙ্ক একসাথে পেস্ট করুন — অ্যাপ নিজেই প্রতিটি লেকচারে বসিয়ে দেবে</string>
+    <string name="bulk_input_hint">এখানে লিঙ্কগুলো পেস্ট করুন…</string>
+    <string name="bulk_paste_clipboard">ক্লিপবোর্ড থেকে পেস্ট করুন</string>
+    <string name="bulk_parse">লিঙ্ক শনাক্ত করুন</string>
+    <string name="bulk_found">%1$s টি লিঙ্ক পাওয়া গেছে</string>
+    <string name="bulk_none_found">কোনো বৈধ লিঙ্ক পাওয়া যায়নি</string>
+    <string name="bulk_preview_title">প্রিভিউ</string>
+    <string name="bulk_apply">%1$s টি লিঙ্ক প্রয়োগ করুন</string>
+    <string name="bulk_applied">%1$s টি লেকচারে লিঙ্ক যুক্ত হয়েছে</string>
+    <string name="bulk_mode_sequential">ক্রমানুসারে বসান</string>
+    <string name="bulk_mode_numbered">নম্বর অনুযায়ী বসান</string>
+    <string name="bulk_mode_hint">লেখায় \"Lecture 5\" থাকলে নম্বর অনুযায়ী বসানো হবে</string>
+    <string name="bulk_overwrite">আগের লিঙ্ক মুছে নতুন লিঙ্ক বসান</string>
+    <string name="bulk_expand_lectures">প্রয়োজনে লেকচার সংখ্যা বাড়ান</string>
+    <string name="bulk_clipboard_empty">ক্লিপবোর্ডে কোনো লেখা নেই</string>
+    <string name="bulk_row_format">লেকচার %1$s → %2$s</string>
+
+    <!-- ===== Notes ===== -->
+    <string name="notes_title">কুইক নোটস</string>
+    <string name="notes_chapter_title">অধ্যায়ের নোট</string>
+    <string name="notes_lecture_title">লেকচার %1$s এর নোট</string>
+    <string name="notes_hint">গুরুত্বপূর্ণ সূত্র বা পয়েন্ট লিখুন…</string>
+    <string name="notes_saved">নোট সংরক্ষিত হয়েছে</string>
+    <string name="notes_empty">এখনো কোনো নোট লেখা হয়নি</string>
+    <string name="notes_char_count">%1$s অক্ষর</string>
+    <string name="notes_open">নোট খুলুন</string>
+    <string name="notes_copy">নোট কপি করুন</string>
+    <string name="notes_copied">নোট কপি হয়েছে</string>
+
+    <!-- ===== Backup / Restore ===== -->
+    <string name="backup_title">ব্যাকআপ ও রিস্টোর</string>
+    <string name="backup_export">ব্যাকআপ ফাইল ডাউনলোড করুন (.json)</string>
+    <string name="backup_export_desc">সব সেশন, লিঙ্ক, নোট ও অগ্রগতি একটি ফাইলে সংরক্ষণ করুন</string>
+    <string name="backup_import">ব্যাকআপ ফাইল সিলেক্ট করুন (.json)</string>
+    <string name="backup_import_desc">আগের ব্যাকআপ থেকে সব ডেটা ফিরিয়ে আনুন</string>
+    <string name="backup_share">ব্যাকআপ শেয়ার করুন</string>
+    <string name="backup_exporting">ব্যাকআপ তৈরি হচ্ছে…</string>
+    <string name="backup_export_success">ব্যাকআপ সংরক্ষিত হয়েছে</string>
+    <string name="backup_export_failed">ব্যাকআপ তৈরি করা যায়নি</string>
+    <string name="backup_importing">ডেটা ফিরিয়ে আনা হচ্ছে…</string>
+    <string name="backup_import_success">%1$s সেশন, %2$s বিষয়, %3$s অধ্যায় ফিরিয়ে আনা হয়েছে</string>
+    <string name="backup_import_failed">ফাইলটি পড়া যায়নি বা ফাইলটি সঠিক নয়</string>
+    <string name="backup_import_invalid">এটি Session Tracks এর বৈধ ব্যাকআপ ফাইল নয়</string>
+    <string name="backup_import_confirm_title">ডেটা রিস্টোর করবেন?</string>
+    <string name="backup_import_confirm_message">রিস্টোর করলে বর্তমান সব ডেটা মুছে গিয়ে ব্যাকআপের ডেটা বসবে।</string>
+    <string name="backup_import_merge">বর্তমান ডেটার সাথে যোগ করুন</string>
+    <string name="backup_import_replace">সব প্রতিস্থাপন করুন</string>
+    <string name="backup_last_export">সর্বশেষ ব্যাকআপ: %1$s</string>
+    <string name="backup_never">এখনো কোনো ব্যাকআপ নেওয়া হয়নি</string>
+    <string name="backup_file_name">session-tracks-backup-%1$s.json</string>
+    <string name="backup_auto_title">অটো ব্যাকআপ</string>
+    <string name="backup_auto_desc">প্রতিবার পরিবর্তনের পর ডিভাইসে নিরাপদে কপি রাখুন</string>
+    <string name="backup_no_app">ফাইল ম্যানেজার অ্যাপ পাওয়া যায়নি</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_title">সেটিংস</string>
+    <string name="settings_appearance">চেহারা</string>
+    <string name="settings_theme">থিম</string>
+    <string name="settings_theme_light">লাইট</string>
+    <string name="settings_theme_dark">ডার্ক</string>
+    <string name="settings_theme_system">সিস্টেম অনুযায়ী</string>
+    <string name="settings_language">ভাষা</string>
+    <string name="settings_language_bn">বাংলা</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_system">সিস্টেম অনুযায়ী</string>
+    <string name="settings_bengali_numerals">বাংলা সংখ্যা দেখান</string>
+    <string name="settings_notifications">নোটিফিকেশন</string>
+    <string name="settings_reminders_enabled">সেশন রিমাইন্ডার</string>
+    <string name="settings_reminders_desc">সেশন শুরুর সময় নোটিফিকেশন পাঠান</string>
+    <string name="settings_reminder_lead">কত মিনিট আগে জানাবে</string>
+    <string name="settings_reminder_lead_value">%1$d মিনিট আগে</string>
+    <string name="settings_reminder_at_time">ঠিক সময়ে</string>
+    <string name="settings_playback">ভিডিও প্লেব্যাক</string>
+    <string name="settings_open_in_app">ইন-অ্যাপ ব্রাউজারে খুলুন</string>
+    <string name="settings_open_in_app_desc">বন্ধ থাকলে YouTube অ্যাপে খুলবে</string>
+    <string name="settings_autocomplete">ভিডিও খুললে সম্পন্ন চিহ্নিত করুন</string>
+    <string name="settings_autocomplete_desc">লেকচার চালু করার পর স্বয়ংক্রিয়ভাবে টিক পড়বে</string>
+    <string name="settings_data">ডেটা</string>
+    <string name="settings_about">অ্যাপ সম্পর্কে</string>
+    <string name="settings_version">সংস্করণ %1$s</string>
+    <string name="settings_reset_app">সব ডেটা মুছে ফেলুন</string>
+    <string name="settings_reset_confirm">সব সেশন, বিষয়, অধ্যায়, লিঙ্ক ও নোট স্থায়ীভাবে মুছে যাবে। এটি ফেরানো যাবে না।</string>
+    <string name="settings_reset_done">সব ডেটা মুছে ফেলা হয়েছে</string>
+    <string name="settings_restore_defaults">ডিফল্ট সেশন ফিরিয়ে আনুন</string>
+    <string name="settings_restore_defaults_desc">শুরুর ৩টি সেশন আবার যোগ করুন</string>
+    <string name="settings_defaults_restored">ডিফল্ট সেশন যোগ হয়েছে</string>
+
+    <!-- ===== Permissions ===== -->
+    <string name="perm_notification_title">নোটিফিকেশন অনুমতি দরকার</string>
+    <string name="perm_notification_message">সেশন শুরুর রিমাইন্ডার পেতে নোটিফিকেশনের অনুমতি দিন।</string>
+    <string name="perm_notification_denied">অনুমতি ছাড়া রিমাইন্ডার দেখানো যাবে না</string>
+    <string name="perm_open_settings">সেটিংস খুলুন</string>
+    <string name="perm_exact_alarm_title">সঠিক সময়ে অ্যালার্মের অনুমতি</string>
+    <string name="perm_exact_alarm_message">সেশন ঠিক সময়ে মনে করিয়ে দিতে \"Alarms &amp; reminders\" অনুমতি দিন। না দিলে রিমাইন্ডার কিছুটা দেরিতে আসতে পারে।</string>
+
+    <!-- ===== Notifications ===== -->
+    <string name="notif_channel_reminder">সেশন রিমাইন্ডার</string>
+    <string name="notif_channel_reminder_desc">পড়ার সেশন শুরুর আগে মনে করিয়ে দেয়</string>
+    <string name="notif_reminder_title">%1$s শুরু হচ্ছে</string>
+    <string name="notif_reminder_body">%1$s — পড়তে বসার সময় হয়েছে</string>
+    <string name="notif_reminder_body_subjects">আজকের বিষয়: %1$s</string>
+
+    <!-- ===== States ===== -->
+    <string name="state_loading">লোড হচ্ছে…</string>
+    <string name="state_empty_title">এখনো কিছু নেই</string>
+    <string name="empty_sessions_title">কোনো সেশন নেই</string>
+    <string name="empty_sessions_message">প্রথম স্টাডি সেশন তৈরি করে পড়া শুরু করুন</string>
+    <string name="empty_sessions_action">সেশন তৈরি করুন</string>
+    <string name="empty_search_title">কিছু পাওয়া যায়নি</string>
+    <string name="empty_search_message">\"%1$s\" এর জন্য কোনো ফলাফল নেই</string>
+    <string name="error_generic">দুঃখিত, কিছু একটা সমস্যা হয়েছে</string>
+    <string name="error_generic_message">আবার চেষ্টা করুন। সমস্যা থাকলে অ্যাপটি বন্ধ করে আবার খুলুন।</string>
+    <string name="error_no_internet">ইন্টারনেট সংযোগ নেই</string>
+    <string name="error_no_internet_message">ভিডিও দেখতে ইন্টারনেট প্রয়োজন। আপনার সব ডেটা অফলাইনে সংরক্ষিত আছে।</string>
+    <string name="error_offline_banner">আপনি অফলাইনে আছেন — ডেটা নিরাপদে সংরক্ষিত</string>
+    <string name="error_db">ডেটা সংরক্ষণে সমস্যা হয়েছে</string>
+    <string name="error_field_required">এই ঘরটি পূরণ করুন</string>
+    <string name="error_name_too_long">নাম %1$d অক্ষরের বেশি হতে পারবে না</string>
+    <string name="error_invalid_number">সঠিক সংখ্যা দিন</string>
+    <string name="error_lecture_range">১ থেকে %1$d এর মধ্যে সংখ্যা দিন</string>
+    <string name="error_end_before_start">শেষের সময় শুরুর সময়ের পরে হতে হবে</string>
+    <string name="error_duplicate_name">এই নামে আগে থেকেই একটি আছে</string>
+
+    <!-- ===== Accessibility ===== -->
+    <string name="cd_app_logo">Session Tracks লোগো</string>
+    <string name="cd_session_color">সেশনের রঙ</string>
+    <string name="cd_progress">অগ্রগতি %1$s শতাংশ</string>
+    <string name="cd_expand">প্রসারিত করুন</string>
+    <string name="cd_collapse">সংকুচিত করুন</string>
+    <string name="cd_empty_illustration">খালি অবস্থার ছবি</string>
+    <string name="cd_add_button">নতুন যোগ করুন</string>
+    <string name="cd_play_lecture">লেকচার %1$s চালু করুন</string>
+    <string name="cd_note_indicator">এই লেকচারে নোট আছে</string>
+    <string name="cd_link_indicator">এই লেকচারে লিঙ্ক আছে</string>
+
+    <!-- ===== Misc ===== -->
+    <string name="time_format_display">%1$s</string>
+    <string name="duration_hours_minutes">%1$d ঘণ্টা %2$d মিনিট</string>
+    <string name="duration_minutes">%1$d মিনিট</string>
+    <string name="duration_hours">%1$d ঘণ্টা</string>
+    <string name="share_progress_subject">Session Tracks — আমার পড়ার অগ্রগতি</string>
+    <string name="share_progress_body">%1$s: %2$s%% সম্পন্ন (%3$s/%4$s লেকচার)</string>
+    <string name="menu_backup">ব্যাকআপ</string>
+    <string name="menu_settings">সেটিংস</string>
+    <string name="dialog_delete_confirm">হ্যাঁ, মুছে ফেলুন</string>
+
+</resources>
