@@ -19,6 +19,7 @@
 | **Version** | `versionCode 1`, `versionName 1.0.0` |
 | **Repository** | https://github.com/viphasibul792/smart.study- |
 | **Working branch** | `arena/01a0012c-smart-study` |
+| **Release** | https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0 (source; APK pending CI) |
 
 ---
 
@@ -541,11 +542,19 @@ The native Android project lives at the repository root (`app/`, `gradle/`,
    models, `%d`↔`%s` format crashes when rendering Bengali numerals, an unused
    `@Transaction` default DAO method, orphaned styles and unused imports.
 
+### Release status
+6. **GitHub Release `v1.0.0` is published** with the tagged source archive
+   (GitHub's automatic `Source code (zip)`). **No APK is attached yet** — the
+   sandbox could not compile one, and `uploads.github.com` (GitHub's asset upload
+   host) was network-blocked, so no binary could be uploaded manually either.
+   Enabling the CI workflow (§5) builds both APKs and attaches them to this same
+   `v1.0.0` release automatically.
+
 ### Suggested next steps
-6. Move the CI workflow into `.github/workflows/` and run it (§5).
-7. Add Espresso instrumented tests for the dashboard → chapter → bulk-import flow.
-8. Add drag-and-drop reordering for sessions/subjects (the `position` column and
+7. Move the CI workflow into `.github/workflows/` and run it (§5).
+8. Add Espresso instrumented tests for the dashboard → chapter → bulk-import flow.
+9. Add drag-and-drop reordering for sessions/subjects (the `position` column and
    ordering queries already exist).
-9. Add a stable release keystore stored as GitHub secrets before any Play Store
+10. Add a stable release keystore stored as GitHub secrets before any Play Store
    submission (`KEYSTORE_PASSWORD` / `KEY_PASSWORD` are already wired up).
-10. Consider a home-screen widget showing today's next session and progress.
+11. Consider a home-screen widget showing today's next session and progress.

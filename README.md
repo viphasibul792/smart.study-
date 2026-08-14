@@ -185,8 +185,11 @@ No credential is ever committed to this repository.
 
 ## 📥 Installation
 
-1. Download the release APK from the [Releases page](https://github.com/viphasibul792/smart.study-/releases).
-2. Open the file on your Android phone.
+1. Go to the [Releases page](https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0).
+   *(The `v1.0.0` release currently ships the source archive; the APK is attached
+   automatically once the CI workflow below is enabled — or build it yourself
+   with `./gradlew assembleRelease`.)*
+2. Download the APK and open the file on your Android phone.
 3. Allow *Install from unknown sources* if prompted.
 4. Launch **Session Tracks** — three study sessions are ready immediately.
 
