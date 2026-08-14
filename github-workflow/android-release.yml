@@ -1,0 +1,105 @@
+name: Build Android APK & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. v1.0.0)"
+        required: false
+        default: "v1.0.0"
+  push:
+    branches:
+      - main
+      - arena/019fffef-smart-study
+    paths-ignore:
+      - "**.md"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Sync Capacitor Android
+        run: npx cap sync android
+
+      - name: Generate signing keystore
+        run: |
+          keytool -genkeypair -v \
+            -keystore "$RUNNER_TEMP/release.keystore" \
+            -alias smartstudy \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass smartstudy123 -keypass smartstudy123 \
+            -dname "CN=Smart Study, OU=App, O=SmartStudy, L=Dhaka, C=BD"
+
+      - name: Build release APK
+        working-directory: android
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/release.keystore
+          ANDROID_KEYSTORE_PASSWORD: smartstudy123
+          ANDROID_KEY_ALIAS: smartstudy
+          ANDROID_KEY_PASSWORD: smartstudy123
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon
+
+      - name: Rename APK
+        run: |
+          VERSION="${{ github.event.inputs.version || 'v1.0.0' }}"
+          cp android/app/build/outputs/apk/release/app-release.apk "smart-study-${VERSION}.apk"
+          echo "APK_NAME=smart-study-${VERSION}.apk" >> "$GITHUB_ENV"
+          echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-study-apk
+          path: ${{ env.APK_NAME }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.VERSION }}
+          name: "Smart Study ${{ env.VERSION }}"
+          target_commitish: ${{ github.sha }}
+          body: |
+            ## 📚 Smart Study — স্টাডি রিমাইন্ডার ও লেকচার ট্র্যাকার
+
+            Android APK build of the Smart Study app (Capacitor + React + Vite).
+
+            ### 📥 Install
+            1. Download `${{ env.APK_NAME }}` below
+            2. Open it on your Android phone (allow "Install from unknown sources" if asked)
+            3. Done! 🎉
+
+            ### ✨ Features
+            - সেশন ম্যানেজমেন্ট ও লেকচার ট্র্যাকিং
+            - বাল্ক লিঙ্ক ম্যাপিং ও ইউটিউব প্লেয়ার
+            - প্রোগ্রেস ট্র্যাকার, পোমোডোরো টাইমার ও কুইক নোটস
+            - ব্যাকআপ ও রিস্টোর
+
+            _Built automatically by GitHub Actions._
+          files: ${{ env.APK_NAME }}
+          fail_on_unmatched_files: true
