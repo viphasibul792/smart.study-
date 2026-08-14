@@ -1,0 +1,6 @@
+{
+  "name": "Study Reminder & Lecture Tracker",
+  "description": "স্টাডি রিমাইন্ডার এবং লেকচার ট্র্যাকিং অ্যাপ - সেশন ম্যানেজমেন্ট, বাল্ক লিঙ্ক ম্যাপিং, ইউটিউব প্লেয়ার, প্রোগ্রেস ট্র্যাকার এবং ব্যাকআপ সহ।",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
