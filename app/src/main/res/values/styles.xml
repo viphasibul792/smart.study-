@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- ===== Typography ===== -->
-    <style name="TextAppearance.SessionTracks.Display" parent="TextAppearance.Material3.HeadlineLarge">
-        <item name="android:textSize">@dimen/text_display</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-
     <style name="TextAppearance.SessionTracks.Headline" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textSize">@dimen/text_headline</item>
         <item name="android:textStyle">bold</item>
@@ -48,32 +41,6 @@
         <item name="android:textColor">@color/text_tertiary</item>
     </style>
 
-    <!-- ===== Text widget styles ===== -->
-    <style name="Text.Screen.Title">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SessionTracks.Headline</item>
-    </style>
-
-    <style name="Text.Section.Title">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SessionTracks.Title</item>
-    </style>
-
-    <style name="Text.Body">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SessionTracks.Body</item>
-        <item name="android:lineSpacingMultiplier">1.25</item>
-    </style>
-
-    <style name="Text.Caption">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/TextAppearance.SessionTracks.Caption</item>
-    </style>
-
     <!-- ===== Cards ===== -->
     <style name="Widget.SessionTracks.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardCornerRadius">@dimen/radius_lg</item>
@@ -89,12 +56,6 @@
         <item name="cardBackgroundColor">@color/card_background</item>
         <item name="strokeColor">@color/md_outline_variant</item>
         <item name="strokeWidth">@dimen/stroke_width</item>
-    </style>
-
-    <style name="Widget.SessionTracks.Card.Clickable" parent="Widget.SessionTracks.Card">
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <!-- ===== Buttons ===== -->
@@ -123,26 +84,6 @@
     <style name="Widget.SessionTracks.Button.Text" parent="Widget.Material3.Button.TextButton">
         <item name="android:minHeight">@dimen/touch_target_min</item>
         <item name="android:textSize">@dimen/text_body</item>
-    </style>
-
-    <style name="Widget.SessionTracks.Button.Icon" parent="Widget.Material3.Button.IconButton">
-        <item name="android:minWidth">@dimen/touch_target_min</item>
-        <item name="android:minHeight">@dimen/touch_target_min</item>
-    </style>
-
-    <!-- Lecture tile button: state-driven background handles completed styling. -->
-    <style name="Widget.SessionTracks.LectureTile" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:minHeight">@dimen/lecture_tile_min_height</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingStart">@dimen/space_sm</item>
-        <item name="android:paddingEnd">@dimen/space_sm</item>
-        <item name="android:textSize">@dimen/text_body</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-        <item name="cornerRadius">@dimen/radius_md</item>
     </style>
 
     <!-- ===== Inputs ===== -->
@@ -175,13 +116,6 @@
         <item name="trackThickness">@dimen/progress_height_lg</item>
     </style>
 
-    <!-- ===== Chips ===== -->
-    <style name="Widget.SessionTracks.Chip" parent="Widget.Material3.Chip.Assist">
-        <item name="chipMinHeight">32dp</item>
-        <item name="android:textSize">@dimen/text_caption</item>
-        <item name="chipCornerRadius">@dimen/radius_pill</item>
-    </style>
-
     <!-- ===== Toolbar ===== -->
     <style name="Widget.SessionTracks.Toolbar" parent="Widget.Material3.Toolbar">
         <item name="android:layout_width">match_parent</item>
@@ -190,18 +124,6 @@
         <item name="titleTextAppearance">@style/TextAppearance.SessionTracks.TitleLarge</item>
         <item name="titleTextColor">@color/text_primary</item>
         <item name="navigationIconTint">@color/text_primary</item>
-    </style>
-
-    <!-- ===== Dividers ===== -->
-    <style name="Widget.SessionTracks.Divider">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/stroke_width</item>
-        <item name="android:background">@color/divider</item>
-    </style>
-
-    <!-- ===== Skeleton loading blocks ===== -->
-    <style name="Widget.SessionTracks.Skeleton">
-        <item name="android:background">@drawable/bg_skeleton</item>
     </style>
 
 </resources>

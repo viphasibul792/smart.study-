@@ -319,18 +319,28 @@ smart.study-/
 | DAO SQL (51 queries) | ✅ Verified | Executed against a real SQLite engine on the generated schema |
 | Interface implementations | ✅ Verified | No missing overrides |
 | Unused/dangling imports | ✅ Verified | 0 |
-| Logic unit tests | ✅ Verified | 17/17 link-parser cases pass (incl. Bengali + messy paste) |
+| Unused styles / dead resources | ✅ Verified | 0 orphaned styles remain |
+| **Java 17 compilation** (framework-free classes) | ✅ **Verified** | `LinkParser`, `BengaliNumerals`, `NumberFormatter`, `StudySession`, all progress models + `Resource`/`Event` compiled with the Eclipse batch compiler at `-17`, zero errors |
+| **Unit tests actually executed** | ✅ **23/23 passing** | The real `LinkParserTest`, `BengaliNumeralsTest` and `ProgressCalculationTest` sources were run unmodified against the compiled production classes |
 | `./gradlew assembleDebug` | ⚠️ **Not run in this environment** | See below |
 | `./gradlew assembleRelease` | ⚠️ **Not run in this environment** | See below |
 | `./gradlew lint` | ⚠️ **Not run in this environment** | See below |
 
-> **Why Gradle was not executed here.** The build sandbox has **no JDK and no
-> Android SDK**, and `dl.google.com`, `maven.google.com`, `services.gradle.org`
-> and `repo1.maven.org` are all network-blocked, so no Android toolchain or
-> dependency could be downloaded. Everything that *could* be verified without
-> compiling was verified (see the table above), and a complete CI workflow is
-> provided so the real Gradle build runs on GitHub's runners. **Do not claim a
-> green Gradle build until the workflow has actually run.**
+> **Why Gradle was not executed here.** The build sandbox has **no Android SDK**,
+> and `dl.google.com`, `maven.google.com`, `services.gradle.org` and
+> `repo1.maven.org` are all network-blocked, so the Android toolchain and the
+> AndroidX/Material dependencies could not be downloaded.
+>
+> To get as close to a real build as possible, a JRE and the Eclipse batch Java
+> compiler were obtained from reachable mirrors, and every class that does not
+> depend on the Android framework was **genuinely compiled at Java 17 and its
+> tests executed (23/23 green)**. The remaining classes (Activities, Room DAOs,
+> adapters) were validated by full-parse, resource-resolution, `findViewById`,
+> SQL-execution and format-arity analysis rather than compilation.
+>
+> **Therefore: the Gradle/AAPT/Room-annotation-processing build is still
+> unverified.** Run the CI workflow (§5) and record the real result here before
+> claiming a green build.
 
 ### What works
 - Full session → subject → chapter → lecture CRUD with cascade deletes.
@@ -519,12 +529,17 @@ The native Android project lives at the repository root (`app/`, `gradle/`,
    denied, everything except reminders keeps working.
 
 ### Verification debt
-5. **The Gradle build has not been executed** (no JDK/SDK, Google/Gradle mirrors
-   blocked in the sandbox). Run the CI workflow or a local
-   `./gradlew assembleDebug` and record the real result here before claiming a
-   verified build. Static verification found and fixed several real issues
-   (duplicate toolbar menus, Room POJO constructor ambiguity, `%d`↔`%s` format
-   mismatches with Bengali numerals, unused imports).
+5. **The Gradle build has not been executed** (no Android SDK; Google/Gradle
+   mirrors blocked in the sandbox). Pure-Java logic *was* compiled and tested for
+   real (23/23), but AAPT resource linking and Room's annotation processor have
+   not run. Run the CI workflow or a local `./gradlew assembleDebug` and record
+   the real result here before claiming a verified build.
+
+   Verification during this session found and fixed several genuine defects:
+   duplicate toolbar menu inflation (`setSupportActionBar` + `app:menu` +
+   `onCreateOptionsMenu`), Room POJO constructor ambiguity on the progress
+   models, `%d`↔`%s` format crashes when rendering Bengali numerals, an unused
+   `@Transaction` default DAO method, orphaned styles and unused imports.
 
 ### Suggested next steps
 6. Move the CI workflow into `.github/workflows/` and run it (§5).
