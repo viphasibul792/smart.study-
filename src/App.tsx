@@ -24,6 +24,7 @@ import {
   Square,
   HelpCircle,
   Flame,
+  Code2,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { StudySession, Subject, Chapter, Lecture, StudySettings } from './types';
@@ -36,6 +37,7 @@ import { ChapterEditorModal } from './components/ChapterEditorModal';
 import { QuickNotesModal } from './components/QuickNotesModal';
 import { GoogleDriveSyncModal } from './components/GoogleDriveSyncModal';
 import { AndroidSourceModal } from './components/AndroidSourceModal';
+import { CodeUpdaterModal } from './components/CodeUpdaterModal';
 import { PomodoroTimer } from './components/PomodoroTimer';
 import { soundManager, isSessionActiveNow } from './utils';
 
@@ -92,6 +94,7 @@ export default function App() {
   } | null>(null);
   const [showDriveSync, setShowDriveSync] = useState(false);
   const [showAndroidSource, setShowAndroidSource] = useState(false);
+  const [showCodeUpdater, setShowCodeUpdater] = useState(false);
   const [filterMode, setFilterMode] = useState<'all' | 'pending' | 'completed'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -628,6 +631,16 @@ export default function App() {
                 </span>
               )}
             </div>
+
+            {/* Code Updater Button */}
+            <button
+              onClick={() => setShowCodeUpdater(true)}
+              className="px-3 py-1.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/20 text-violet-300 border border-violet-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm hover:scale-[1.02]"
+              title="কোড লিখে সেশন, বিষয়, অধ্যায় ও লেকচার আপডেট করুন"
+            >
+              <Code2 className="w-3.5 h-3.5 text-violet-400" />
+              <span>কোড আপডেট</span>
+            </button>
 
             {/* Android Java+XML Source Code (GitHub Ready) Button */}
             <button
@@ -1225,6 +1238,14 @@ export default function App() {
           <p>© 2026 স্টাডি রিমাইন্ডার ও লেকচার ট্র্যাকার • সমস্ত ডেটা লোকাল স্টোরেজ ও ড্রাইভে সুরক্ষিত।</p>
           <div className="flex items-center gap-3">
             <button
+              onClick={() => setShowCodeUpdater(true)}
+              className="text-violet-400 hover:underline cursor-pointer flex items-center gap-1"
+            >
+              <Code2 className="w-3.5 h-3.5" />
+              <span>কোড আপডেটার</span>
+            </button>
+            <span>•</span>
+            <button
               onClick={() => setShowAndroidSource(true)}
               className="text-emerald-400 hover:underline cursor-pointer flex items-center gap-1"
             >
@@ -1384,6 +1405,29 @@ export default function App() {
       {/* 8. Android Native Java + XML Source Code Exporter Modal */}
       {showAndroidSource && (
         <AndroidSourceModal onClose={() => setShowAndroidSource(false)} />
+      )}
+
+      {/* 9. Code Updater Modal */}
+      {showCodeUpdater && (
+        <CodeUpdaterModal
+          sessions={sessions}
+          currentSessionId={selectedSessionId}
+          currentSubjectId={selectedSubjectId}
+          currentChapterId={selectedChapterId}
+          onApply={(nextSessions) => {
+            setSessions(nextSessions);
+            if (!nextSessions.find((s) => s.id === selectedSessionId) && nextSessions.length > 0) {
+              setSelectedSessionId(nextSessions[0].id);
+              if (nextSessions[0].subjects.length > 0) {
+                setSelectedSubjectId(nextSessions[0].subjects[0].id);
+                if (nextSessions[0].subjects[0].chapters.length > 0) {
+                  setSelectedChapterId(nextSessions[0].subjects[0].chapters[0].id);
+                }
+              }
+            }
+          }}
+          onClose={() => setShowCodeUpdater(false)}
+        />
       )}
     </div>
   );

@@ -65,6 +65,11 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
 
+      - name: Build single-file HTML app
+        run: |
+          npm run build:single
+          cp dist-single/index.html SmartStudy-App.html
+
       - name: Rename APK
         run: |
           VERSION="${{ github.event.inputs.version || 'v1.0.0' }}"
@@ -94,6 +99,9 @@ jobs:
             2. Open it on your Android phone (allow "Install from unknown sources" if asked)
             3. Done! 🎉
 
+            **Alternative:** `SmartStudy-App.html` — single-file version. Open it
+            in any mobile browser and use "Add to Home Screen"; works offline, no install needed.
+
             ### ✨ Features
             - সেশন ম্যানেজমেন্ট ও লেকচার ট্র্যাকিং
             - বাল্ক লিঙ্ক ম্যাপিং ও ইউটিউব প্লেয়ার
@@ -101,5 +109,7 @@ jobs:
             - ব্যাকআপ ও রিস্টোর
 
             _Built automatically by GitHub Actions._
-          files: ${{ env.APK_NAME }}
+          files: |
+            ${{ env.APK_NAME }}
+            SmartStudy-App.html
           fail_on_unmatched_files: true
