@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg">
+
+    <LinearLayout android:id="@+id/topBar"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:background="@color/card_bg" android:elevation="2dp"
+        android:paddingLeft="@dimen/pad_lg" android:paddingRight="@dimen/pad_sm"
+        android:paddingTop="@dimen/pad_md" android:paddingBottom="@dimen/pad_md">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="@string/app_name"
+            android:textSize="@dimen/text_title" android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+        <Button android:id="@+id/btnSearch" android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch" android:text="🔍"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/search_hint" />
+        <Button android:id="@+id/btnBackup" android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch" android:text="💾"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/backup" />
+        <Button android:id="@+id/btnSettings" android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch" android:text="⚙"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/settings" />
+    </LinearLayout>
+
+    <EditText android:id="@+id/searchBox"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_below="@id/topBar" android:visibility="gone"
+        android:hint="@string/search_hint" android:inputType="text"
+        android:maxLines="1" android:padding="@dimen/pad_md"
+        android:layout_margin="@dimen/pad_md" android:background="@drawable/outline_box"
+        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+
+    <ScrollView android:id="@+id/scroll"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_below="@id/searchBox" android:clipToPadding="false"
+        android:paddingBottom="80dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="@dimen/pad_md">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/header_bg"
+                android:padding="@dimen/pad_lg" android:layout_marginBottom="@dimen/pad_md">
+                <TextView android:id="@+id/greeting" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/white"
+                    android:textSize="@dimen/text_body" android:alpha="0.9" />
+                <TextView android:id="@+id/overallPct" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/white"
+                    android:textSize="30sp" android:textStyle="bold" />
+                <TextView android:id="@+id/overallDetail" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/white"
+                    android:textSize="@dimen/text_small" android:alpha="0.9" />
+                <ProgressBar android:id="@+id/overallBar" style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent" android:layout_height="8dp"
+                    android:layout_marginTop="@dimen/pad_md" android:max="100" />
+                <TextView android:id="@+id/nextSession" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginTop="@dimen/pad_sm"
+                    android:textColor="@color/white" android:textSize="@dimen/text_small" android:alpha="0.9" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="@dimen/pad_md"
+                    android:baselineAligned="false">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/chip" android:padding="@dimen/pad_sm">
+                        <TextView android:id="@+id/statSessions" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textColor="@color/white"
+                            android:textSize="17sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="সেশন" android:textColor="@color/white" android:textSize="11sp" android:alpha="0.9" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/chip" android:padding="@dimen/pad_sm" android:layout_marginLeft="@dimen/pad_sm">
+                        <TextView android:id="@+id/statSubjects" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textColor="@color/white"
+                            android:textSize="17sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="বিষয়" android:textColor="@color/white" android:textSize="11sp" android:alpha="0.9" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/chip" android:padding="@dimen/pad_sm" android:layout_marginLeft="@dimen/pad_sm">
+                        <TextView android:id="@+id/statLectures" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textColor="@color/white"
+                            android:textSize="17sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="লেকচার" android:textColor="@color/white" android:textSize="11sp" android:alpha="0.9" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/chip" android:padding="@dimen/pad_sm" android:layout_marginLeft="@dimen/pad_sm">
+                        <TextView android:id="@+id/statDone" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:textColor="@color/white"
+                            android:textSize="17sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="সম্পন্ন" android:textColor="@color/white" android:textSize="11sp" android:alpha="0.9" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/emptyBox" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:gravity="center" android:padding="40dp" android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📚" android:textSize="56sp" />
+                <TextView android:id="@+id/emptyTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_md" android:text="@string/empty_sessions"
+                    android:textSize="17sp" android:textStyle="bold" android:textColor="@color/text_primary" />
+                <TextView android:id="@+id/emptyMsg" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_xs" android:text="@string/empty_sessions_msg"
+                    android:gravity="center" android:textSize="@dimen/text_body" android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/sessionList" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button android:id="@+id/fab" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" android:layout_margin="@dimen/pad_lg"
+        android:text="@string/add_session" android:textColor="@color/white"
+        android:textStyle="bold" android:background="@drawable/btn"
+        android:paddingLeft="@dimen/pad_xl" android:paddingRight="@dimen/pad_xl"
+        android:elevation="6dp" android:minHeight="@dimen/touch" />
+</RelativeLayout>

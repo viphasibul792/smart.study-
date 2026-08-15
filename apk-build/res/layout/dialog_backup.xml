@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="@dimen/pad_xl">
+    <TextView android:id="@+id/lastBackup" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textSize="12sp" android:textColor="@color/text_tertiary" />
+    <Button android:id="@+id/btnExport" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/export_json" android:background="@drawable/outline_box"
+        android:textColor="@color/brand" android:layout_marginTop="@dimen/pad_md" android:minHeight="@dimen/touch" />
+    <Button android:id="@+id/btnImport" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/import_json" android:background="@drawable/outline_box"
+        android:textColor="@color/brand" android:layout_marginTop="@dimen/pad_sm" android:minHeight="@dimen/touch" />
+    <Button android:id="@+id/btnShare" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="ব্যাকআপ শেয়ার করুন" android:background="@drawable/outline_box"
+        android:textColor="@color/brand" android:layout_marginTop="@dimen/pad_sm" android:minHeight="@dimen/touch" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="ব্যাকআপ ফাইল Downloads ফোল্ডারে সংরক্ষিত হবে" android:textSize="11sp"
+        android:textColor="@color/text_tertiary" android:layout_marginTop="@dimen/pad_md" />
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/subjRow"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:gravity="center_vertical"
+    android:background="@drawable/outline_box" android:padding="@dimen/pad_md"
+    android:layout_marginBottom="@dimen/pad_sm" android:clickable="true">
+    <View android:id="@+id/dot" android:layout_width="12dp" android:layout_height="12dp"
+        android:background="@drawable/dot" />
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical" android:layout_marginLeft="@dimen/pad_md">
+        <TextView android:id="@+id/subjName" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+            android:textStyle="bold" android:textColor="@color/text_primary" android:maxLines="1" android:ellipsize="end" />
+        <TextView android:id="@+id/subjMeta" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:textSize="12sp" android:textColor="@color/text_tertiary" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="6dp">
+            <ProgressBar android:id="@+id/subjBar" style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="6dp" android:max="100" />
+            <TextView android:id="@+id/subjPct" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pad_sm"
+                android:textSize="12sp" android:textStyle="bold" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:id="@+id/subjMenu" android:layout_width="40dp" android:layout_height="@dimen/touch"
+        android:text="⋮" android:textSize="18sp" android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/text_secondary" android:minWidth="0dp"
+        android:paddingLeft="0dp" android:paddingRight="0dp" />
+</LinearLayout>

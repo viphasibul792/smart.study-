@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand">#818CF8</color>
+    <color name="brand_dark">#020617</color>
+    <color name="brand_light">#312E81</color>
+    <color name="success_bg">#0B3D24</color>
+    <color name="screen_bg">#020617</color>
+    <color name="card_bg">#0F172A</color>
+    <color name="text_primary">#F1F5F9</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_tertiary">#64748B</color>
+    <color name="divider">#1E293B</color>
+    <color name="track">#1E293B</color>
+    <color name="tile_pending_bg">#0F172A</color>
+    <color name="tile_pending_stroke">#334155</color>
+</resources>

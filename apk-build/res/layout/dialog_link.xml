@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="@dimen/pad_xl">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/video_link" android:textSize="12sp" android:textColor="@color/text_tertiary" />
+    <EditText android:id="@+id/inLink" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:inputType="textUri" android:maxLines="2" android:hint="https://youtu.be/…"
+        android:background="@drawable/outline_box" android:padding="@dimen/pad_md" android:layout_marginTop="@dimen/pad_xs"
+        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+    <Button android:id="@+id/btnPasteLink" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/paste_clipboard" android:layout_marginTop="@dimen/pad_sm"
+        android:background="@drawable/outline_box" android:textColor="@color/brand" android:minHeight="@dimen/touch" />
+</LinearLayout>

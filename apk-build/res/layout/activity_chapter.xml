@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/screen_bg">
+    <LinearLayout android:id="@+id/topBar" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical" android:background="@color/card_bg" android:elevation="2dp"
+        android:paddingLeft="@dimen/pad_sm" android:paddingRight="@dimen/pad_sm"
+        android:paddingTop="@dimen/pad_sm" android:paddingBottom="@dimen/pad_sm">
+        <Button android:id="@+id/btnBack" android:layout_width="wrap_content" android:layout_height="@dimen/touch"
+            android:text="←" android:textSize="20sp" android:background="?android:attr/selectableItemBackground" android:textColor="@color/text_primary" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:layout_marginLeft="@dimen/pad_sm">
+            <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="17sp" android:textStyle="bold" android:textColor="@color/text_primary" android:maxLines="1" android:ellipsize="end" />
+            <TextView android:id="@+id/subtitle" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="12sp" android:textColor="@color/text_tertiary" />
+        </LinearLayout>
+        <Button android:id="@+id/btnNotes" android:layout_width="wrap_content" android:layout_height="@dimen/touch"
+            android:text="📝" android:background="?android:attr/selectableItemBackground" />
+        <Button android:id="@+id/btnMore" android:layout_width="40dp" android:layout_height="@dimen/touch"
+            android:text="⋮" android:textSize="18sp" android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/text_primary" android:minWidth="0dp" android:paddingLeft="0dp" android:paddingRight="0dp" />
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_below="@id/topBar" android:clipToPadding="false" android:paddingBottom="@dimen/pad_lg">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="@dimen/pad_md">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card"
+                android:padding="@dimen/pad_lg" android:layout_marginBottom="@dimen/pad_md" android:elevation="1dp">
+                <TextView android:id="@+id/progPct" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="24sp" android:textStyle="bold" android:textColor="@color/text_primary" />
+                <TextView android:id="@+id/progDetail" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_small" android:textColor="@color/text_secondary" />
+                <ProgressBar android:id="@+id/progBar" style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent" android:layout_height="10dp"
+                    android:layout_marginTop="@dimen/pad_md" android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card"
+                android:padding="@dimen/pad_lg" android:layout_marginBottom="@dimen/pad_md" android:elevation="1dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/total_lectures" android:textSize="12sp"
+                    android:textColor="@color/text_tertiary" android:textAllCaps="true" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="@dimen/pad_xs">
+                    <EditText android:id="@+id/lecCount" android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:inputType="number" android:maxLength="4"
+                        android:hint="যেমন: ২০" android:background="@drawable/outline_box" android:padding="@dimen/pad_md"
+                        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+                    <Button android:id="@+id/applyCount" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="✓" android:textSize="18sp" android:textColor="@color/white"
+                        android:background="@drawable/btn" android:layout_marginLeft="@dimen/pad_sm" android:minHeight="@dimen/touch" />
+                </LinearLayout>
+                <Button android:id="@+id/btnBulk" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/bulk_import" android:textColor="@color/white"
+                    android:textStyle="bold" android:background="@drawable/btn" android:layout_marginTop="@dimen/pad_md" android:minHeight="@dimen/touch" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/emptyBox" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:gravity="center" android:padding="32dp" android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎬" android:textSize="48sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_md" android:text="@string/empty_lectures"
+                    android:textSize="16sp" android:textStyle="bold" android:textColor="@color/text_primary" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_xs" android:text="@string/empty_lectures_msg"
+                    android:gravity="center" android:textSize="@dimen/text_small" android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+            <GridLayout android:id="@+id/lectureGrid" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:columnCount="3" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

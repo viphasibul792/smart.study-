@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="@dimen/pad_xl">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/session_name" android:textSize="12sp" android:textColor="@color/text_tertiary" />
+    <EditText android:id="@+id/inName" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:inputType="textCapSentences" android:maxLines="1" android:background="@drawable/outline_box"
+        android:padding="@dimen/pad_md" android:layout_marginTop="@dimen/pad_xs"
+        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="@dimen/pad_md" android:baselineAligned="false">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/start_time" android:textSize="12sp" android:textColor="@color/text_tertiary" />
+            <Button android:id="@+id/btnStart" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/outline_box" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginLeft="@dimen/pad_md">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/end_time" android:textSize="12sp" android:textColor="@color/text_tertiary" />
+            <Button android:id="@+id/btnEnd" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/outline_box" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="রঙ" android:textSize="12sp" android:textColor="@color/text_tertiary" android:layout_marginTop="@dimen/pad_md" />
+    <LinearLayout android:id="@+id/colorRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="@dimen/pad_xs" />
+    <CheckBox android:id="@+id/cbReminder" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/reminders" android:layout_marginTop="@dimen/pad_md"
+        android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="@dimen/pad_xl">
+    <CheckBox android:id="@+id/cbDark" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/dark_mode" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+    <CheckBox android:id="@+id/cbBengali" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/bengali_digits" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+    <CheckBox android:id="@+id/cbReminders" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/reminders" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+    <CheckBox android:id="@+id/cbInApp" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="ইন-অ্যাপ ব্রাউজারে খুলুন" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+    <CheckBox android:id="@+id/cbAutoDone" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="ভিডিও খুললে সম্পন্ন চিহ্নিত করুন" android:textColor="@color/text_primary" android:minHeight="@dimen/touch" />
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="@color/divider" android:layout_marginTop="@dimen/pad_md" android:layout_marginBottom="@dimen/pad_md" />
+    <Button android:id="@+id/btnBackup2" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/backup" android:background="@drawable/outline_box"
+        android:textColor="@color/brand" android:minHeight="@dimen/touch" />
+    <Button android:id="@+id/btnDefaults" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/restore_defaults" android:background="@drawable/outline_box"
+        android:textColor="@color/brand" android:layout_marginTop="@dimen/pad_sm" android:minHeight="@dimen/touch" />
+    <Button android:id="@+id/btnWipe" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/delete_all" android:background="@drawable/outline_box"
+        android:textColor="@color/danger" android:layout_marginTop="@dimen/pad_sm" android:minHeight="@dimen/touch" />
+    <TextView android:id="@+id/version" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:layout_marginTop="@dimen/pad_lg"
+        android:textSize="12sp" android:textColor="@color/text_tertiary" />
+</LinearLayout>
+</ScrollView>

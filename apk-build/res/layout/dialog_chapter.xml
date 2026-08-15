@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="@dimen/pad_xl">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/chapter_number" android:textSize="12sp" android:textColor="@color/text_tertiary" />
+    <EditText android:id="@+id/inNum" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:maxLines="1" android:hint="যেমন: ০২" android:background="@drawable/outline_box"
+        android:padding="@dimen/pad_md" android:layout_marginTop="@dimen/pad_xs"
+        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/chapter_name" android:textSize="12sp" android:textColor="@color/text_tertiary" android:layout_marginTop="@dimen/pad_md" />
+    <EditText android:id="@+id/inName" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:inputType="textCapSentences" android:maxLines="1" android:hint="যেমন: ভেক্টর"
+        android:background="@drawable/outline_box" android:padding="@dimen/pad_md" android:layout_marginTop="@dimen/pad_xs"
+        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/total_lectures" android:textSize="12sp" android:textColor="@color/text_tertiary" android:layout_marginTop="@dimen/pad_md" />
+    <EditText android:id="@+id/inTotal" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:inputType="number" android:maxLength="4" android:hint="যেমন: ২০"
+        android:background="@drawable/outline_box" android:padding="@dimen/pad_md" android:layout_marginTop="@dimen/pad_xs"
+        android:textColor="@color/text_primary" android:textColorHint="@color/text_tertiary" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="সংখ্যা দিলে স্বয়ংক্রিয়ভাবে লেকচার বাটন তৈরি হবে" android:textSize="11sp"
+        android:textColor="@color/text_tertiary" android:layout_marginTop="@dimen/pad_xs" />
+</LinearLayout>
+</ScrollView>
