@@ -37,13 +37,13 @@ Daemon will be stopped at the end of the build
 > Task :app:dataBindingMergeDependencyArtifactsDebug
 > Task :app:generateDebugResources
 > Task :app:packageDebugResources
-> Task :app:mergeDebugResources
 > Task :app:generateDebugBuildConfig
 > Task :app:parseDebugLocalResources
+> Task :app:mergeDebugResources
 > Task :app:javaPreCompileDebug
 > Task :app:dataBindingGenBaseClassesDebug
-> Task :app:checkDebugAarMetadata
 > Task :app:mapDebugSourceSetPaths
+> Task :app:checkDebugAarMetadata
 > Task :app:createDebugCompatibleScreenManifests
 > Task :app:extractDeepLinksDebug
 > Task :app:processDebugMainManifest
@@ -60,14 +60,14 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: /home/runner/work/smart.study-/smart.study-/app/src/main/java/com/sessiontracks/app/data/repository/StudyRepository.java uses unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
-> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:processDebugJavaRes
 > Task :app:compileDebugUnitTestJavaWithJavac
 > Task :app:testDebugUnitTest
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1786756994058.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1786757336007.json
 
-BUILD SUCCESSFUL in 55s
+BUILD SUCCESSFUL in 53s
 24 actionable tasks: 24 executed
      tests exit=0
 
@@ -96,6 +96,7 @@ Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) wi
 > Task :app:dataBindingGenBaseClassesRelease FROM-CACHE
 > Task :app:extractProguardFiles
 > Task :app:mergeReleaseJniLibFolders
+> Task :app:processReleaseManifestForPackage
 > Task :app:mergeReleaseNativeLibs NO-SOURCE
 > Task :app:stripReleaseDebugSymbols NO-SOURCE
 > Task :app:extractReleaseNativeSymbolTables NO-SOURCE
@@ -115,7 +116,6 @@ Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) wi
 > Task :app:validateSigningRelease
 > Task :app:writeReleaseAppMetadata
 > Task :app:writeReleaseSigningConfigVersions
-> Task :app:processReleaseManifestForPackage
 > Task :app:processReleaseResources
 
 > Task :app:compileReleaseJavaWithJavac
@@ -158,9 +158,9 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1786757090434.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1786757422365.json
 
-BUILD SUCCESSFUL in 1m 29s
+BUILD SUCCESSFUL in 1m 11s
 49 actionable tasks: 44 executed, 5 from cache
      assembleRelease exit=0
 
@@ -174,10 +174,10 @@ app/build/outputs/apk/debug/app-debug.apk
 
 ---> Artifacts to publish:
 total 9.6M
--rw-r--r-- 1 runner runner 104K Aug 15 01:26 SessionTracks-v1.0.0-debug.apk
--rw-r--r-- 1 runner runner 104K Aug 15 01:26 SessionTracks-v1.0.0-release.apk
--rw-r--r-- 1 runner runner 6.7M Aug 15 01:26 session-tracks-v1.0.0-debug.apk
--rw-r--r-- 1 runner runner 2.8M Aug 15 01:26 session-tracks-v1.0.0-release.apk
+-rw-r--r-- 1 runner runner 104K Aug 15 01:31 SessionTracks-v1.0.0-debug.apk
+-rw-r--r-- 1 runner runner 104K Aug 15 01:31 SessionTracks-v1.0.0-release.apk
+-rw-r--r-- 1 runner runner 6.7M Aug 15 01:31 session-tracks-v1.0.0-debug.apk
+-rw-r--r-- 1 runner runner 2.8M Aug 15 01:31 session-tracks-v1.0.0-release.apk
 
 ---> Publishing v1.0.0
      upload OK
