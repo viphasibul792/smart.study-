@@ -232,6 +232,8 @@ publishes a GitHub Release.
 
 ## 📄 Further documentation
 
+- **[BUILD_APK.md](BUILD_APK.md)** — 📦 **APK কীভাবে তৈরি করবেন** (step-by-step, in Bengali).
+
 - **[HANDOFF.md](HANDOFF.md)** — current state, feature checklist, build commands, how to resume.
 - **[APP_SPECIFICATION.md](APP_SPECIFICATION.md)** — the original requirements, kept as the source of truth.
 

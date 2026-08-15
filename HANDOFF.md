@@ -474,6 +474,9 @@ export ANDROID_KEY_ALIAS=...
 export ANDROID_KEY_PASSWORD=...
 ```
 
+> 📦 **End-user build guide:** see **[BUILD_APK.md](BUILD_APK.md)** for
+> step-by-step APK instructions in Bengali (GitHub Actions / Android Studio / CLI).
+
 ### ⚠️ Enable CI (one manual step)
 The credential used for this branch lacks GitHub's `workflow` scope, so the
 workflow file could not be pushed into `.github/workflows/`. Move it once:
