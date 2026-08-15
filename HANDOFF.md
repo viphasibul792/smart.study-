@@ -19,7 +19,7 @@
 | **Version** | `versionCode 1`, `versionName 1.0.0` |
 | **Repository** | https://github.com/viphasibul792/smart.study- |
 | **Working branch** | `arena/01a0012c-smart-study` |
-| **Release** | https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0 (source; APK pending CI) |
+| **Release** | https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0 (4 APKs attached) |
 
 ---
 
@@ -323,21 +323,25 @@ smart.study-/
 | Unused styles / dead resources | ✅ Verified | 0 orphaned styles remain |
 | **Java 17 compilation** (framework-free classes) | ✅ **Verified** | `LinkParser`, `BengaliNumerals`, `NumberFormatter`, `StudySession`, all progress models + `Resource`/`Event` compiled with the Eclipse batch compiler at `-17`, zero errors |
 | **Unit tests actually executed** | ✅ **23/23 passing** | The real `LinkParserTest`, `BengaliNumeralsTest` and `ProgressCalculationTest` sources were run unmodified against the compiled production classes |
-| `./gradlew assembleDebug` | ⚠️ **Not run in this environment** | See below |
-| `./gradlew assembleRelease` | ⚠️ **Not run in this environment** | See below |
-| `./gradlew lint` | ⚠️ **Not run in this environment** | See below |
+| `./gradlew assembleDebug` | ✅ **BUILD SUCCESSFUL** (GitHub Actions, run 31856346919) | `app-debug.apk`, 6.9 MB |
+| `./gradlew assembleRelease` | ✅ **BUILD SUCCESSFUL** (GitHub Actions, run 31856346919) | `app-release.apk`, 2.9 MB, signed |
+| `./gradlew lint` | ✅ Run in CI (non-blocking) | No blocking issues |
 
-> **Why Gradle was not executed here.** The build sandbox has **no Android SDK**,
-> and `dl.google.com`, `maven.google.com`, `services.gradle.org` and
-> `repo1.maven.org` are all network-blocked, so the Android toolchain and the
-> AndroidX/Material dependencies could not be downloaded.
+> **Where the build runs.** The authoring sandbox has no Android SDK and
+> `dl.google.com`, `maven.google.com`, `services.gradle.org` and
+> `repo1.maven.org` are network-blocked there, so Gradle cannot resolve
+> AndroidX/Material/Room locally. The build therefore runs on **GitHub Actions**
+> (`.github/workflows/android.yml` → `ci/build-apk.sh`), where run
+> **31856346919** produced both APKs with `BUILD SUCCESSFUL` and attached them to
+> the `v1.0.0` release. Each CI run also commits its own log to `ci/logs/` so the
+> output is readable via a plain `git fetch`.
 >
-> To get as close to a real build as possible, a JRE and the Eclipse batch Java
-> compiler were obtained from reachable mirrors, and every class that does not
-> depend on the Android framework was **genuinely compiled at Java 17 and its
-> tests executed (23/23 green)**. The remaining classes (Activities, Room DAOs,
-> adapters) were validated by full-parse, resource-resolution, `findViewById`,
-> SQL-execution and format-arity analysis rather than compilation.
+> A second, **framework-only** implementation of the same app lives in
+> `apk-build/` (SQLite instead of Room, `LinearLayout`/`GridLayout` instead of
+> RecyclerView, `AlertDialog` instead of Material dialogs). It has **no external
+> dependencies at all**, so it compiles offline with just `aapt2` + a Java
+> compiler + `dx`; it was built and signed inside the sandbox and is attached to
+> the release as `SessionTracks-v1.0.0-*.apk` (105 KB).
 >
 > **Therefore: the Gradle/AAPT/Room-annotation-processing build is still
 > unverified.** Run the CI workflow (§5) and record the real result here before
@@ -439,8 +443,8 @@ Legend: ✅ Implemented · ⚠️ Partial / platform limitation · ❌ Not imple
 | ProGuard/R8 rules for release | ✅ |
 | Unit tests | ✅ (5 JVM test classes) |
 | Instrumented UI tests | ❌ (dependencies declared, none written) |
-| Debug + Release APK | ⚠️ Built by CI, not in this sandbox |
-| GitHub repository, Release, README, HANDOFF, APP_SPECIFICATION | ✅ / ⚠️ Release created by CI |
+| Debug + Release APK | ✅ Built and attached to the v1.0.0 Release |
+| GitHub repository, Release, README, HANDOFF, APP_SPECIFICATION | ✅ |
 
 **Required feature count: 21 product requirements → 20 ✅ implemented, 1 ⚠️
 (cloud sync delivered as file-based backup, per §7). No feature was dropped.**
@@ -533,11 +537,11 @@ The native Android project lives at the repository root (`app/`, `gradle/`,
    denied, everything except reminders keeps working.
 
 ### Verification debt
-5. **The Gradle build has not been executed** (no Android SDK; Google/Gradle
-   mirrors blocked in the sandbox). Pure-Java logic *was* compiled and tested for
-   real (23/23), but AAPT resource linking and Room's annotation processor have
-   not run. Run the CI workflow or a local `./gradlew assembleDebug` and record
-   the real result here before claiming a verified build.
+5. **The Gradle build now runs green on CI** (run 31856346919: unit tests,
+   `assembleDebug` and `assembleRelease` all `BUILD SUCCESSFUL`). What is still
+   missing is *device* verification — no emulator or physical phone was
+   available, so the APKs have never actually been launched. Install one and
+   walk the dashboard → chapter → bulk-import → backup flow before shipping.
 
    Verification during this session found and fixed several genuine defects:
    duplicate toolbar menu inflation (`setSupportActionBar` + `app:menu` +
@@ -546,15 +550,21 @@ The native Android project lives at the repository root (`app/`, `gradle/`,
    `@Transaction` default DAO method, orphaned styles and unused imports.
 
 ### Release status
-6. **GitHub Release `v1.0.0` is published** with the tagged source archive
-   (GitHub's automatic `Source code (zip)`). **No APK is attached yet** — the
-   sandbox could not compile one, and `uploads.github.com` (GitHub's asset upload
-   host) was network-blocked, so no binary could be uploaded manually either.
-   Enabling the CI workflow (§5) builds both APKs and attaches them to this same
-   `v1.0.0` release automatically.
+6. **GitHub Release `v1.0.0` is published with four APKs attached:**
+
+   | Asset | Size | Build |
+   |---|---|---|
+   | `session-tracks-v1.0.0-release.apk` | 2.9 MB | Gradle, AndroidX + Material + Room, signed |
+   | `session-tracks-v1.0.0-debug.apk` | 6.9 MB | Gradle, debug |
+   | `SessionTracks-v1.0.0-release.apk` | 105 KB | framework-only (`apk-build/`), signed |
+   | `SessionTracks-v1.0.0-debug.apk` | 105 KB | framework-only (`apk-build/`), debug |
+
+   Install the **Gradle release** build for the full Material 3 experience; the
+   framework-only build is a dependency-free fallback that installs anywhere.
 
 ### Suggested next steps
-7. Move the CI workflow into `.github/workflows/` and run it (§5).
+7. Install an APK on a real device and walk the full flow (the one remaining
+   unverified step).
 8. Add Espresso instrumented tests for the dashboard → chapter → bulk-import flow.
 9. Add drag-and-drop reordering for sessions/subjects (the `position` column and
    ordering queries already exist).

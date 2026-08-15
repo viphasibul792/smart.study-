@@ -185,29 +185,47 @@ No credential is ever committed to this repository.
 
 ## 📥 Installation
 
-1. Go to the [Releases page](https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0).
-   *(The `v1.0.0` release currently ships the source archive; the APK is attached
-   automatically once the CI workflow below is enabled — or build it yourself
-   with `./gradlew assembleRelease`.)*
-2. Download the APK and open the file on your Android phone.
+1. Go to the [Releases page](https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0)
+   and download an APK:
+
+   | Asset | Size | What it is |
+   |---|---|---|
+   | **`session-tracks-v1.0.0-release.apk`** | 2.9 MB | **Recommended.** Full Material 3 build (AndroidX + Room), signed |
+   | `session-tracks-v1.0.0-debug.apk` | 6.9 MB | Same app, debuggable |
+   | `SessionTracks-v1.0.0-release.apk` | 105 KB | Framework-only build — zero dependencies, tiny, plainer look |
+   | `SessionTracks-v1.0.0-debug.apk` | 105 KB | Framework-only, debuggable |
+
+2. Open the downloaded file on your Android phone.
 3. Allow *Install from unknown sources* if prompted.
 4. Launch **Session Tracks** — three study sessions are ready immediately.
+
+> Both variants implement all seven features and share the same package name
+> (`com.sessiontracks.app`), so **install only one** — Android will refuse to
+> install the second over the first because they are signed with different keys.
 
 ---
 
 ## 🤖 Continuous integration
 
-`github-workflow/android.yml` builds both APKs, runs lint + unit tests and
-publishes a GitHub Release.
+`.github/workflows/android.yml` runs `ci/build-apk.sh` on every push: unit
+tests, lint, `assembleDebug`, `assembleRelease`, then it attaches every APK to
+the `v1.0.0` GitHub Release. Latest run: **✅ success** (`31856346919`).
 
-> **One manual step:** the automation credential used for this branch lacks
-> GitHub's `workflow` scope, so the file could not be committed into
-> `.github/workflows/`. Move it once and CI becomes fully automatic:
->
-> ```bash
-> git mv github-workflow/android.yml .github/workflows/android.yml
-> git commit -m "ci: enable Android workflow" && git push
-> ```
+Each run also commits its own build log to `ci/logs/`, so the output can be read
+with a plain `git fetch` without opening the Actions UI.
+
+### Building without a network
+
+`apk-build/` holds a second implementation that depends on **nothing but the
+Android framework** — no AndroidX, no Material, no Room, no Gson. It builds with
+`aapt2` + any Java compiler + `dx` + `apksigner`:
+
+```bash
+cd apk-build && ./build.sh     # -> dist/SessionTracks-v1.0.0-{debug,release}.apk
+```
+
+This is what makes an offline/air-gapped build possible; see the header of
+`apk-build/build.sh` for the tool paths it expects.
 
 ---
 
@@ -227,6 +245,13 @@ publishes a GitHub Release.
 - The release APK published by CI is signed with a **build-time generated
   keystore**, which is fine for sideloading but must be replaced with a stable
   keystore before any Play Store submission.
+- **The APKs have not been launched on a physical device or emulator** — none
+  was available in the build environment. The builds, unit tests, resource
+  linking and SQL are all verified automatically, but the on-device experience
+  has not been eyeballed.
+- The framework-only build (`SessionTracks-*.apk`) targets API 27 and uses plain
+  `Theme.Material`, so it looks simpler than the Gradle build and skips edge-to-edge
+  insets and Custom Tabs; it opens links in the YouTube app or the browser.
 
 ---
 
