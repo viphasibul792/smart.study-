@@ -1,0 +1,9 @@
+run:        31856605129
+sha:        4982db93023a95d83c85b4564881cbdc6b9f79dc
+gradle_ok:  1
+note:       
+artifacts:
+  SessionTracks-v1.0.0-debug.apk
+  SessionTracks-v1.0.0-release.apk
+  session-tracks-v1.0.0-debug.apk
+  session-tracks-v1.0.0-release.apk

@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- Graduation cap + progress ticks: study session tracking -->
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M54,28L30,40l24,12 20,-10v14h4V40L54,28z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M38,48.5v9L54,66l16,-8.5v-9L54,57 38,48.5z" />
+    <path android:fillColor="#FFE9D5" android:fillAlpha="0.95"
+        android:pathData="M34,72h40v4H34zM34,80h28v4H34z" />
+</vector>

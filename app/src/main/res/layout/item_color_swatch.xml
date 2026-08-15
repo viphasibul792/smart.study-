@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/space_xs">
+
+    <View
+        android:id="@+id/colorSwatch"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_color_swatch"
+        android:clickable="true"
+        android:focusable="true"
+        android:minWidth="@dimen/touch_target_min"
+        android:minHeight="@dimen/touch_target_min" />
+
+    <ImageView
+        android:id="@+id/colorSelectedIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/action_done"
+        android:src="@drawable/ic_check"
+        android:visibility="gone"
+        app:tint="@color/white" />
+
+</FrameLayout>

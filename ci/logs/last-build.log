@@ -1,0 +1,185 @@
+==============================================
+ Session Tracks — building v1.0.0
+==============================================
+openjdk version "17.0.20" 2026-07-21
+ANDROID_HOME=/usr/local/lib/android/sdk
+runner: Linux runnervmzvulz 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+---> Gradle version check
+ - Compiling and testing with Java 22
+ - Cacheable Groovy script compilation
+ - New methods in lazy collection properties
+
+For more details see https://docs.gradle.org/8.7/release-notes.html
+
+
+------------------------------------------------------------
+Gradle 8.7
+------------------------------------------------------------
+
+Build time:   2024-03-22 15:52:46 UTC
+Revision:     650af14d7653aa949fce5e886e685efc9cf97c10
+
+Kotlin:       1.9.22
+Groovy:       3.0.17
+Ant:          Apache Ant(TM) version 1.10.13 compiled on January 4 2023
+JVM:          17.0.20 (Eclipse Adoptium 17.0.20+8)
+OS:           Linux 6.17.0-1022-azure amd64
+
+     exit=0
+
+---> Running unit tests (non-blocking)
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.7/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResValues
+> Task :app:dataBindingMergeDependencyArtifactsDebug
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:generateDebugBuildConfig
+> Task :app:parseDebugLocalResources
+> Task :app:mergeDebugResources
+> Task :app:javaPreCompileDebug
+> Task :app:dataBindingGenBaseClassesDebug
+> Task :app:mapDebugSourceSetPaths
+> Task :app:checkDebugAarMetadata
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugUnitTestJavaRes NO-SOURCE
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+
+> Task :app:compileDebugJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/runner/work/smart.study-/smart.study-/app/src/main/java/com/sessiontracks/app/data/repository/StudyRepository.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:processDebugJavaRes
+> Task :app:compileDebugUnitTestJavaWithJavac
+> Task :app:testDebugUnitTest
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1786757336007.json
+
+BUILD SUCCESSFUL in 53s
+24 actionable tasks: 24 executed
+     tests exit=0
+
+---> Building debug APK
+     assembleDebug exit=0
+     --- resource/compile errors ---
+     --- end ---
+
+---> Generating a release keystore
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+	for: CN=Session Tracks, OU=App, O=Session Tracks, L=Dhaka, C=BD
+[Storing /home/runner/work/_temp/session-tracks-release.keystore]
+
+---> Building release APK
+> Task :app:packageReleaseResources
+> Task :app:parseReleaseLocalResources FROM-CACHE
+> Task :app:generateReleaseBuildConfig
+> Task :app:javaPreCompileRelease FROM-CACHE
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease FROM-CACHE
+> Task :app:processReleaseMainManifest
+> Task :app:mergeReleaseResources
+> Task :app:processReleaseManifest
+> Task :app:dataBindingGenBaseClassesRelease FROM-CACHE
+> Task :app:extractProguardFiles
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:processReleaseManifestForPackage
+> Task :app:mergeReleaseNativeLibs NO-SOURCE
+> Task :app:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:mergeReleaseStartupProfile
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:processApplicationManifestReleaseForBundle
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:processReleaseResources
+
+> Task :app:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/runner/work/smart.study-/smart.study-/app/src/main/java/com/sessiontracks/app/data/repository/StudyRepository.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:mergeReleaseGeneratedProguardFiles
+> Task :app:processReleaseJavaRes
+> Task :app:expandReleaseArtProfileWildcards
+> Task :app:mergeReleaseJavaResource
+> Task :app:bundleReleaseResources
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+
+> Task :app:lintVitalRelease
+/home/runner/work/smart.study-/smart.study-/app/src/main/res/xml/backup_rules.xml:8: Error: exports/ is not in an included path [FullBackupContent]
+    <exclude domain="file" path="exports/" />
+                                 ~~~~~~~~
+/home/runner/work/smart.study-/smart.study-/app/src/main/res/xml/data_extraction_rules.xml:7: Error: exports/ is not in an included path [FullBackupContent]
+        <exclude domain="file" path="exports/" />
+                                     ~~~~~~~~
+
+   Explanation for issues of type "FullBackupContent":
+   Ensures that <data-extraction-rules> and <full-backup-content> files, which
+   configure backup options, are valid.
+
+   https://android-developers.googleblog.com/2015/07/auto-backup-for-apps-made-simple.html
+
+2 errors, 0 warnings
+
+
+> Task :app:minifyReleaseWithR8
+> Task :app:compileReleaseArtProfile
+> Task :app:shrinkReleaseRes
+> Task :app:convertReleaseProtoResources
+> Task :app:optimizeReleaseResources
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1786757422365.json
+
+BUILD SUCCESSFUL in 1m 11s
+49 actionable tasks: 44 executed, 5 from cache
+     assembleRelease exit=0
+
+---> Gradle outputs on disk:
+app/build/outputs/apk/release/app-release.apk
+app/build/outputs/apk/debug/app-debug.apk
+
+---> Collecting the prebuilt framework-only APKs
+     + SessionTracks-v1.0.0-debug.apk
+     + SessionTracks-v1.0.0-release.apk
+
+---> Artifacts to publish:
+total 9.6M
+-rw-r--r-- 1 runner runner 104K Aug 15 01:31 SessionTracks-v1.0.0-debug.apk
+-rw-r--r-- 1 runner runner 104K Aug 15 01:31 SessionTracks-v1.0.0-release.apk
+-rw-r--r-- 1 runner runner 6.7M Aug 15 01:31 session-tracks-v1.0.0-debug.apk
+-rw-r--r-- 1 runner runner 2.8M Aug 15 01:31 session-tracks-v1.0.0-release.apk
+
+---> Publishing v1.0.0
+     upload OK
+
+---> Committing the build log

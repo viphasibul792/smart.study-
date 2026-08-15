@@ -1,0 +1,25 @@
+name: Android CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [arena/01a0012c-smart-study]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - run: PUBLISH=1 VERSION=v1.0.0 bash ci/build-apk.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: apks
+          path: artifacts/*.apk

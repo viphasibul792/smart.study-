@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Skeleton placeholder shown while the first database read resolves. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loadingStateRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/screen_padding_horizontal"
+    android:paddingEnd="@dimen/screen_padding_horizontal"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <include layout="@layout/partial_skeleton_row" />
+
+    <include layout="@layout/partial_skeleton_row" />
+
+    <include layout="@layout/partial_skeleton_row" />
+
+</LinearLayout>

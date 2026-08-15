@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/screen_bg">
+    <LinearLayout android:id="@+id/topBar" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical" android:background="@color/card_bg"
+        android:elevation="2dp" android:paddingLeft="@dimen/pad_sm"
+        android:paddingRight="@dimen/pad_sm" android:paddingTop="@dimen/pad_sm" android:paddingBottom="@dimen/pad_sm">
+        <Button android:id="@+id/btnBack" android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch" android:text="←" android:textSize="20sp"
+            android:background="?android:attr/selectableItemBackground" android:textColor="@color/text_primary" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:layout_marginLeft="@dimen/pad_sm">
+            <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="18sp" android:textStyle="bold" android:textColor="@color/text_primary" android:maxLines="1" android:ellipsize="end" />
+            <TextView android:id="@+id/subtitle" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="12sp" android:textColor="@color/text_tertiary" android:visibility="gone" />
+        </LinearLayout>
+        <Button android:id="@+id/btnEdit" android:layout_width="wrap_content" android:layout_height="@dimen/touch"
+            android:text="✎" android:textSize="17sp" android:background="?android:attr/selectableItemBackground" android:textColor="@color/text_primary" />
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_below="@id/topBar" android:clipToPadding="false" android:paddingBottom="80dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="@dimen/pad_md">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card"
+                android:padding="@dimen/pad_lg" android:layout_marginBottom="@dimen/pad_md" android:elevation="1dp">
+                <TextView android:id="@+id/sumPct" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="24sp" android:textStyle="bold" android:textColor="@color/text_primary" />
+                <ProgressBar android:id="@+id/sumBar" style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent" android:layout_height="8dp"
+                    android:layout_marginTop="@dimen/pad_sm" android:max="100" />
+                <TextView android:id="@+id/sumDetail" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_sm" android:textSize="@dimen/text_small" android:textColor="@color/text_secondary" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/emptyBox" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:gravity="center" android:padding="40dp" android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📂" android:textSize="52sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_md" android:text="@string/empty_chapters"
+                    android:textSize="16sp" android:textStyle="bold" android:textColor="@color/text_primary" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/chapterList" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button android:id="@+id/fab" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/pad_lg" android:text="@string/add_chapter"
+        android:textColor="@color/white" android:textStyle="bold" android:background="@drawable/btn"
+        android:paddingLeft="@dimen/pad_xl" android:paddingRight="@dimen/pad_xl" android:elevation="6dp" android:minHeight="@dimen/touch" />
+</RelativeLayout>

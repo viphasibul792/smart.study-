@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Completed lectures use activated state so a single background handles both. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorPrimary">
+    <item>
+        <selector>
+            <item android:state_activated="true" android:drawable="@drawable/bg_lecture_tile_done" />
+            <item android:drawable="@drawable/bg_lecture_tile_pending" />
+        </selector>
+    </item>
+</ripple>

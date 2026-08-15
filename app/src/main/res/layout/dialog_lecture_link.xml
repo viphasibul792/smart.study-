@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/space_2xl"
+    android:paddingTop="@dimen/space_sm"
+    android:paddingEnd="@dimen/space_2xl"
+    android:paddingBottom="@dimen/space_sm">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/titleInputLayout"
+        style="@style/Widget.SessionTracks.TextInputLayout"
+        android:hint="@string/lecture_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lecture_title_hint"
+            android:imeOptions="actionNext"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/linkInputLayout"
+        style="@style/Widget.SessionTracks.TextInputLayout"
+        android:layout_marginTop="@dimen/space_sm"
+        android:hint="@string/lecture_link"
+        app:endIconContentDescription="@string/bulk_paste_clipboard"
+        app:endIconDrawable="@drawable/ic_content_paste"
+        app:endIconMode="custom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/linkEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lecture_link_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textUri"
+            android:maxLines="2"
+            tools:ignore="Autofill" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

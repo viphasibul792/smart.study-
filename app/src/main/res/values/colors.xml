@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Brand palette (indigo / violet study theme) -->
+    <color name="brand_50">#EEF2FF</color>
+    <color name="brand_100">#E0E7FF</color>
+    <color name="brand_200">#C7D2FE</color>
+    <color name="brand_300">#A5B4FC</color>
+    <color name="brand_400">#818CF8</color>
+    <color name="brand_500">#6366F1</color>
+    <color name="brand_600">#4F46E5</color>
+    <color name="brand_700">#4338CA</color>
+    <color name="brand_800">#3730A3</color>
+    <color name="brand_900">#312E81</color>
+
+    <color name="accent_400">#F472B6</color>
+    <color name="accent_500">#EC4899</color>
+    <color name="accent_600">#DB2777</color>
+
+    <!-- Semantic -->
+    <color name="success_400">#4ADE80</color>
+    <color name="success_500">#22C55E</color>
+    <color name="success_600">#16A34A</color>
+    <color name="success_700">#15803D</color>
+    <color name="success_container">#DCFCE7</color>
+    <color name="on_success_container">#14532D</color>
+
+    <color name="warning_500">#F59E0B</color>
+    <color name="warning_600">#D97706</color>
+    <color name="warning_container">#FEF3C7</color>
+    <color name="on_warning_container">#78350F</color>
+
+    <color name="error_400">#F87171</color>
+    <color name="error_500">#EF4444</color>
+    <color name="error_600">#DC2626</color>
+    <color name="error_container">#FEE2E2</color>
+    <color name="on_error_container">#7F1D1D</color>
+
+    <!-- Neutrals -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="grey_50">#F8FAFC</color>
+    <color name="grey_100">#F1F5F9</color>
+    <color name="grey_200">#E2E8F0</color>
+    <color name="grey_300">#CBD5E1</color>
+    <color name="grey_400">#94A3B8</color>
+    <color name="grey_500">#64748B</color>
+    <color name="grey_600">#475569</color>
+    <color name="grey_700">#334155</color>
+    <color name="grey_800">#1E293B</color>
+    <color name="grey_900">#0F172A</color>
+    <color name="grey_950">#020617</color>
+
+    <!-- Light theme roles -->
+    <color name="md_primary">@color/brand_600</color>
+    <color name="md_on_primary">@color/white</color>
+    <color name="md_primary_container">@color/brand_100</color>
+    <color name="md_on_primary_container">@color/brand_900</color>
+
+    <color name="md_secondary">@color/accent_600</color>
+    <color name="md_on_secondary">@color/white</color>
+    <color name="md_secondary_container">#FCE7F3</color>
+    <color name="md_on_secondary_container">#831843</color>
+
+    <color name="md_background">@color/grey_50</color>
+    <color name="md_on_background">@color/grey_900</color>
+    <color name="md_surface">@color/white</color>
+    <color name="md_on_surface">@color/grey_900</color>
+    <color name="md_surface_variant">@color/grey_100</color>
+    <color name="md_on_surface_variant">@color/grey_600</color>
+    <color name="md_outline">@color/grey_300</color>
+    <color name="md_outline_variant">@color/grey_200</color>
+    <color name="md_error">@color/error_600</color>
+    <color name="md_on_error">@color/white</color>
+
+    <!-- App-specific semantic aliases -->
+    <color name="text_primary">@color/grey_900</color>
+    <color name="text_secondary">@color/grey_600</color>
+    <color name="text_tertiary">@color/grey_500</color>
+    <color name="divider">@color/grey_200</color>
+    <color name="scrim">#66000000</color>
+    <color name="card_background">@color/white</color>
+    <color name="screen_background">@color/grey_50</color>
+    <color name="chip_background">@color/grey_100</color>
+    <color name="progress_track">@color/grey_200</color>
+    <color name="lecture_pending_bg">@color/white</color>
+    <color name="lecture_pending_stroke">@color/grey_300</color>
+    <color name="lecture_done_bg">@color/success_container</color>
+    <color name="lecture_done_stroke">@color/success_600</color>
+    <color name="lecture_done_text">@color/on_success_container</color>
+    <color name="skeleton_base">@color/grey_200</color>
+
+    <!-- Session accent palette (used for session/subject colour tags) -->
+    <color name="palette_indigo">#6366F1</color>
+    <color name="palette_violet">#8B5CF6</color>
+    <color name="palette_pink">#EC4899</color>
+    <color name="palette_rose">#F43F5E</color>
+    <color name="palette_orange">#F97316</color>
+    <color name="palette_amber">#F59E0B</color>
+    <color name="palette_emerald">#10B981</color>
+    <color name="palette_teal">#14B8A6</color>
+    <color name="palette_cyan">#06B6D4</color>
+    <color name="palette_blue">#3B82F6</color>
+
+</resources>

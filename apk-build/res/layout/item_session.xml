@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:background="@drawable/card"
+    android:layout_marginBottom="@dimen/pad_md" android:elevation="1dp">
+
+    <LinearLayout android:id="@+id/header" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical" android:padding="@dimen/pad_lg"
+        android:background="?android:attr/selectableItemBackground" android:clickable="true">
+        <View android:id="@+id/colorBar" android:layout_width="6dp" android:layout_height="42dp"
+            android:background="@drawable/accent_bar" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:layout_marginLeft="@dimen/pad_md">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:id="@+id/sName" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textSize="17sp"
+                    android:textStyle="bold" android:textColor="@color/text_primary" android:maxLines="1" android:ellipsize="end" />
+                <TextView android:id="@+id/liveBadge" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pad_sm"
+                    android:text="এখন চলছে" android:textSize="10sp" android:textStyle="bold"
+                    android:textColor="@color/success" android:background="@drawable/outline_box"
+                    android:paddingLeft="6dp" android:paddingRight="6dp" android:visibility="gone" />
+            </LinearLayout>
+            <TextView android:id="@+id/sTime" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_small"
+                android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/sCount" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="12sp"
+                android:textColor="@color/text_tertiary" />
+        </LinearLayout>
+        <TextView android:id="@+id/expandIcon" android:layout_width="32dp" android:layout_height="wrap_content"
+            android:text="▾" android:textSize="18sp" android:gravity="center" android:textColor="@color/text_secondary" />
+        <Button android:id="@+id/sMenu" android:layout_width="40dp" android:layout_height="@dimen/touch"
+            android:text="⋮" android:textSize="18sp" android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/text_secondary" android:paddingLeft="0dp" android:paddingRight="0dp"
+            android:minWidth="0dp" />
+    </LinearLayout>
+
+    <ProgressBar android:id="@+id/sBar" style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent" android:layout_height="6dp" android:max="100"
+        android:layout_marginLeft="@dimen/pad_lg" android:layout_marginRight="@dimen/pad_lg" />
+
+    <LinearLayout android:id="@+id/body" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="vertical"
+        android:paddingLeft="@dimen/pad_lg" android:paddingRight="@dimen/pad_lg"
+        android:paddingTop="@dimen/pad_sm" android:paddingBottom="@dimen/pad_sm">
+        <TextView android:id="@+id/noSubjects" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="এই সেশনে এখনো কোনো বিষয় নেই"
+            android:gravity="center" android:padding="@dimen/pad_lg" android:visibility="gone"
+            android:textColor="@color/text_tertiary" android:textSize="@dimen/text_small"
+            android:background="@drawable/outline_box" />
+        <LinearLayout android:id="@+id/subjectList" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" />
+        <Button android:id="@+id/addSubject" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="@string/add_subject"
+            android:textColor="@color/brand" android:textSize="@dimen/text_small"
+            android:background="?android:attr/selectableItemBackground" android:minHeight="@dimen/touch" />
+    </LinearLayout>
+</LinearLayout>

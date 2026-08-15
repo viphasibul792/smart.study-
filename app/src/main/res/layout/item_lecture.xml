@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  A lecture tile in the chapter grid. The whole tile plays the video; the checkbox
+  toggles completion. Completed state is driven by android:activated on the root.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lectureRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/space_xs"
+    android:background="@drawable/bg_lecture_tile"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="@dimen/lecture_tile_min_height">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingTop="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm"
+        android:paddingBottom="@dimen/space_sm">
+
+        <TextView
+            android:id="@+id/lectureNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/lecture_tile_text"
+            android:textSize="@dimen/text_body"
+            android:textStyle="bold"
+            tools:text="L1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/lectureLinkIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:contentDescription="@string/cd_link_indicator"
+                android:src="@drawable/ic_link"
+                android:visibility="gone"
+                app:tint="@color/text_tertiary"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/lectureNoteIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="3dp"
+                android:contentDescription="@string/cd_note_indicator"
+                android:src="@drawable/ic_note"
+                android:visibility="gone"
+                app:tint="@color/text_tertiary"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/lectureCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="2dp"
+        app:buttonTint="@color/checkbox_tint" />
+
+</FrameLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_play" android:icon="@drawable/ic_play" android:title="@string/lecture_play" />
+    <item android:id="@+id/action_toggle_done" android:icon="@drawable/ic_check" android:title="@string/lecture_mark_done" />
+    <item android:id="@+id/action_edit_link" android:icon="@drawable/ic_link" android:title="@string/lecture_edit_link" />
+    <item android:id="@+id/action_lecture_notes" android:icon="@drawable/ic_note" android:title="@string/notes_title" />
+    <item android:id="@+id/action_copy_link" android:icon="@drawable/ic_copy" android:title="@string/action_copy" />
+</menu>
