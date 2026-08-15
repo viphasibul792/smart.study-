@@ -1,66 +1,105 @@
 # 📦 APK কীভাবে তৈরি করবেন — Session Tracks
 
-তিনটি উপায় আছে। **উপায় ১ সবচেয়ে সহজ** — কোনো সফটওয়্যার ইনস্টল করতে হবে না,
-শুধু ব্রাউজার থেকেই APK পেয়ে যাবেন।
+---
+
+## 🔴 আগের বিল্ড কেন ফেল করেছিল
+
+আপনি `.github/workflows/android.yml` ফাইলটি তৈরি করেছিলেন, কিন্তু **ফাইলটি
+সম্পূর্ণ খালি সেভ হয়েছে (মাত্র ১ বাইট)** — কনটেন্ট পেস্ট হয়নি। তাই GitHub
+ফাইলটি পড়তেই পারেনি এবং ০ সেকেন্ডে ফেল করেছে।
+
+**সমাধান:** আমি বিল্ডের সব কাজ `ci/build-apk.sh` স্ক্রিপ্টে সরিয়ে নিয়েছি
+(এটি ইতিমধ্যে GitHub-এ আছে ✅)। এখন workflow ফাইলটি মাত্র **২৫ লাইন** —
+পেস্ট করা অনেক সহজ ও নিরাপদ।
 
 ---
 
-## ✅ উপায় ১ — GitHub Actions (সুপারিশকৃত, কম্পিউটার লাগবে না)
+## ✅ উপায় ১ — GitHub Actions (মাত্র ২ মিনিট, কম্পিউটার লাগবে না)
 
-GitHub-এর সার্ভারেই APK বিল্ড হবে এবং Release-এ যুক্ত হয়ে যাবে।
-মোট সময়: **~২ মিনিট সেটআপ + ~৫ মিনিট বিল্ড**।
+### ধাপ ১ — খালি ফাইলটি এডিট করুন
 
-### ধাপ ১ — workflow ফাইলটি সঠিক জায়গায় নিন
+এই লিংকে যান (ফাইলটি ইতিমধ্যে আছে, শুধু খালি):
 
-ফাইলটি এখন আছে `github-workflow/android.yml`-এ। এটিকে
-`.github/workflows/android.yml`-এ নিতে হবে।
+👉 https://github.com/viphasibul792/smart.study-/edit/arena/01a0012c-smart-study/.github/workflows/android.yml
 
-> **কেন আমি নিজে করতে পারিনি:** আমার GitHub credential-এ `workflow` scope নেই,
-> তাই `.github/workflows/` ফোল্ডারে ফাইল push করার অনুমতি ছিল না।
+*(লিংকটি সরাসরি এডিট মোডে খুলবে)*
 
-**ব্রাউজার থেকে (সবচেয়ে সহজ):**
+### ধাপ ২ — ভেতরের সব মুছে নিচের লেখাটুকু হুবহু বসান
 
-1. এই লিংকে যান:
-   https://github.com/viphasibul792/smart.study-/blob/arena/01a0012c-smart-study/github-workflow/android.yml
-2. ডান পাশের **পেন্সিল আইকন** (✏️ Edit) এ ক্লিক করুন।
-3. একদম উপরে ফাইলের নামের ঘরে পুরো পাথটি বদলে দিন:
-   ```
-   .github/workflows/android.yml
-   ```
-   *(শুধু নামের ঘরে `.github/workflows/` লিখলেই GitHub নিজে থেকে ফোল্ডার বানিয়ে নেবে)*
-4. নিচে **Commit changes** → branch হিসেবে `arena/01a0012c-smart-study` রেখে
-   **Commit changes** চাপুন।
+> 💡 **টিপ:** এডিটরে ক্লিক করে **Ctrl+A** (ম্যাকে Cmd+A) চেপে সব সিলেক্ট করুন,
+> **Delete** চাপুন, তারপর নিচের কোডটুকু কপি করে পেস্ট করুন।
 
-**অথবা টার্মিনাল থেকে:**
-
-```bash
-git clone https://github.com/viphasibul792/smart.study-.git
-cd smart.study-
-git checkout arena/01a0012c-smart-study
-
-git mv github-workflow/android.yml .github/workflows/android.yml
-git commit -m "ci: enable Android workflow"
-git push origin arena/01a0012c-smart-study
+```yaml
+name: Android CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [arena/01a0012c-smart-study]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - run: PUBLISH=1 VERSION=v1.0.0 bash ci/build-apk.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: apks
+          path: artifacts/*.apk
 ```
 
-### ধাপ ২ — বিল্ড চালু হবে
+### ধাপ ৩ — Commit করুন
 
-Commit করার সাথে সাথেই বিল্ড শুরু হয়ে যাবে। দেখতে পারেন এখানে:
-https://github.com/viphasibul792/smart.study-/actions
+সবুজ **Commit changes...** বোতাম → branch `arena/01a0012c-smart-study` ঠিক আছে
+কিনা দেখুন → **Commit changes**।
 
-হাতে চালাতে চাইলে: **Actions** ট্যাব → বাঁ পাশে **Android CI** → ডানে
-**Run workflow** → branch `arena/01a0012c-smart-study` → **Run workflow**।
+### ধাপ ৪ — পেস্ট হয়েছে কিনা যাচাই করুন (গুরুত্বপূর্ণ!)
 
-### ধাপ ৩ — APK ডাউনলোড করুন
+Commit করার পর ফাইলটি আবার দেখুন:
+https://github.com/viphasibul792/smart.study-/blob/arena/01a0012c-smart-study/.github/workflows/android.yml
 
-বিল্ড সবুজ (✅) হলে APK দুই জায়গায় পাবেন:
+- ✅ **২৫ লাইন কোড দেখা গেলে** — ঠিক আছে, পরের ধাপে যান
+- ❌ **খালি দেখালে বা "0 lines" লেখা থাকলে** — আবার ধাপ ২ করুন
 
-| কোথায় | কী পাবেন |
+### ধাপ ৫ — বিল্ড দেখুন
+
+Commit করার সাথে সাথেই বিল্ড শুরু হবে:
+👉 https://github.com/viphasibul792/smart.study-/actions
+
+- 🟡 হলুদ চাকা = চলছে (৫–১০ মিনিট লাগবে)
+- ✅ সবুজ টিক = সফল
+- ❌ লাল ক্রস = এরর — লগটি আমাকে পাঠান, ঠিক করে দেবো
+
+### ধাপ ৬ — APK ডাউনলোড করুন 🎉
+
+বিল্ড সবুজ হলে এখানে APK পাবেন:
+
+👉 **https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0**
+
+**Assets** সেকশন থেকে নামান:
+
+| ফাইল | কার জন্য |
 |---|---|
-| **Releases** → https://github.com/viphasibul792/smart.study-/releases/tag/v1.0.0 | `session-tracks-v1.0.0-release.apk` (সাইন করা, ফোনে ইনস্টলযোগ্য) |
-| **Actions** → বিল্ডে ঢুকে নিচে **Artifacts** | debug + release দুটোই |
+| `session-tracks-v1.0.0-release.apk` | ⭐ **এটি নিন** — ফোনে ইনস্টলের জন্য |
+| `session-tracks-v1.0.0-debug.apk` | শুধু ডেভেলপমেন্টের জন্য |
 
-> ফোনে ইনস্টল করার সময় *"Install from unknown sources"* চাইলে অনুমতি দিন।
+### ধাপ ৭ — ফোনে ইনস্টল করুন
+
+1. ফোনের ব্রাউজার দিয়ে উপরের Releases লিংকে যান
+2. `session-tracks-v1.0.0-release.apk` ডাউনলোড করুন
+3. ডাউনলোড শেষে ফাইলটিতে ট্যাপ করুন
+4. *"Install from unknown sources"* / *"এই উৎস থেকে ইনস্টল করার অনুমতি দিন"*
+   চাইলে **Settings** → **Allow** করে ফিরে আসুন
+5. **Install** চাপুন — হয়ে গেল! 🎉
 
 ---
 
