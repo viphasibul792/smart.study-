@@ -61,9 +61,12 @@ if [ -f ./gradlew ]; then
 
   echo
   echo "---> Building debug APK"
-  ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tail -80
-  DEBUG_RC=${PIPESTATUS[0]}
+  ./gradlew assembleDebug --no-daemon --stacktrace > /tmp/gradle-debug.log 2>&1
+  DEBUG_RC=$?
   echo "     assembleDebug exit=$DEBUG_RC"
+  echo "     --- resource/compile errors ---"
+  grep -nE "error:|e: |Execution failed|Android resource linking failed|AAPT" /tmp/gradle-debug.log | head -60 || true
+  echo "     --- end ---"
 
   # Signing keystore for the release build.
   KEYSTORE_FILE="${RUNNER_TEMP:-/tmp}/session-tracks-release.keystore"
@@ -161,7 +164,8 @@ if [ "$PUSH_LOG" = "1" ] && [ -n "${GITHUB_ACTIONS:-}" ]; then
   } > ci/logs/summary.txt
   git config user.name  "github-actions[bot]"
   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-  git add -f ci/logs/last-build.log ci/logs/summary.txt
+  cp /tmp/gradle-debug.log ci/logs/gradle-debug.log 2>/dev/null || true
+  git add -f ci/logs/last-build.log ci/logs/summary.txt ci/logs/gradle-debug.log
   git commit -m "ci: build log for ${GITHUB_RUN_ID:-local} [skip ci]" || true
   git push origin "HEAD:${GITHUB_REF_NAME:-arena/01a0012c-smart-study}" || true
 fi
