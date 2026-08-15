@@ -1,7 +1,9 @@
-run:        31856230943
-sha:        640269e8089b9b0a412a6b8b12bb2e635a57f125
-gradle_ok:  0
-note:       Gradle produced no APK (see build-log.txt).
+run:        31856346919
+sha:        6fe54d2114200a5ec21194fcbd65c60947dc67f5
+gradle_ok:  1
+note:       
 artifacts:
   SessionTracks-v1.0.0-debug.apk
   SessionTracks-v1.0.0-release.apk
+  session-tracks-v1.0.0-debug.apk
+  session-tracks-v1.0.0-release.apk
