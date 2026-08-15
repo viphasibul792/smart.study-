@@ -131,7 +131,7 @@
                     android:paddingEnd="@dimen/screen_padding_horizontal"
                     android:paddingBottom="@dimen/space_md"
                     android:visibility="gone"
-                    app:layoutAnimation="@anim/layout_animation_fall_down"
+                    android:layoutAnimation="@anim/layout_animation_fall_down"
                     tools:itemCount="3"
                     tools:listitem="@layout/item_session"
                     tools:visibility="visible" />
